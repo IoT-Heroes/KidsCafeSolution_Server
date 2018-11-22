@@ -1,4 +1,4 @@
-package repository;
+package com.heroes.repository;
 
 import org.springframework.stereotype.Repository;
 

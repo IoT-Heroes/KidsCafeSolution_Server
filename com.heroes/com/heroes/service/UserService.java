@@ -1,10 +1,10 @@
-package service;
+package com.heroes.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import repository.UserDao;
-import vo.UserVo;
+import com.heroes.repository.UserDao;
+import com.heroes.vo.UserVo;
 
 @Service
 public class UserService {

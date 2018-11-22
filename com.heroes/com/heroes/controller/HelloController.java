@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import dto.JSONResult;
+import com.heroes.dto.JSONResult;
 @Controller
 @RequestMapping( "/Domain1" )
 public class HelloController {

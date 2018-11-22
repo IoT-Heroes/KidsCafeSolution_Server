@@ -1,4 +1,4 @@
-package dto;
+package com.heroes.dto;
 
 public class JSONResult {
 	private String result;  //"success" or "fail"

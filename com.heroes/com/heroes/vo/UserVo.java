@@ -1,4 +1,4 @@
-package vo;
+package com.heroes.vo;
 
 public class UserVo {
 	private String id;
