@@ -10,9 +10,9 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 	<context:annotation-config />
-	<context:component-scan
-		base-package="com.heroes.controller" />
 
+    <!-- auto proxy -->    
+	<aop:aspectj-autoproxy />
 
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
 	<mvc:annotation-driven>
@@ -66,5 +66,13 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
+	<mvc:default-servlet-handler/>
 
+	<!-- 빈 설정을 annotion기반으로 하겠다. -->
+	<context:annotation-config />
+
+	<context:component-scan base-package="com.heroes.controller" />
+	
+	
 </beans>
