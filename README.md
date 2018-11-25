@@ -1,3 +1,6 @@
-# heroes 틀 코드
+# heroes 
 ---
-프로젝트를 위한 코드 
+
+### DB : Postgre SQL
+#### Version : 10.6-1
+#### Link : https://www.enterprisedb.com/thank-you-downloading-postgresql?anid=1256160
