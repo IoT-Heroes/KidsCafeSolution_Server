@@ -20,7 +20,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		Object handler)
 		throws Exception {
 		
-		//1. hanlder Á¾·ù È®ÀÎ
+		//1. hanlder ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 		if( handler instanceof HandlerMethod == false ) {
 			return true;
 		}
@@ -28,12 +28,12 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		//2. casting
 		HandlerMethod handlerMethod = (HandlerMethod)handler;
 		
-		//3. Method @Auth ¹Þ¾Æ¿À±â
+		//3. Method @Auth ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		Auth auth = 
 			handlerMethod.getMethodAnnotation( Auth.class );
 		
-		//4. Method¿¡ @Auth °¡ ¾ø´Ù¸é,
-		//   Class(Type)¿¡ ºÙ¿¡ ÀÖ´Â @Auth ¹Þ¾Æ¿À±â
+		//4. Methodï¿½ï¿½ @Auth ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½,
+		//   Class(Type)ï¿½ï¿½ ï¿½Ù¿ï¿½ ï¿½Ö´ï¿½ @Auth ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 		if( auth == null ) {
 			auth = handlerMethod.
 				   getMethod().
@@ -41,43 +41,43 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			       getAnnotation(Auth.class);
 		}
 		
-		//5. @Auth°¡ ¾ÈºÙ¾î ÀÖ´Â °æ¿ì
+		//5. @Authï¿½ï¿½ ï¿½ÈºÙ¾ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
 		if( auth == null ) {
 			return true;
 		}
 		
-		//5. @Auth°¡ ºÙ¾î ÀÖ±â ÀÎÁõ¿©ºÎ Ã¼Å©
+		//5. @Authï¿½ï¿½ ï¿½Ù¾ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
 		HttpSession session = request.getSession();
 		
-		if( session == null ) { // ÀÎÁõÀÌ ¾ÈµÇ¾î ÀÖÀ½
+		if( session == null ) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
 			response.sendRedirect( request.getContextPath() + "/user/wrongaccess" );
 			return false;
 		}
 		
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
-		if( authUser == null ) { // ÀÎÁõÀÌ ¾ÈµÇ¾î ÀÖÀ½
+		if( authUser == null ) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇ¾ï¿½ ï¿½ï¿½ï¿½ï¿½
 			response.sendRedirect( request.getContextPath() + "/user/wrongaccess" );
 			return false;
 		}
 
-		//6. Role °¡Á®¿À±â
+		//6. Role ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Auth.Role role = auth.role();
 		
-		//7. User Role Á¢±ÙÀÌ¸é ÀÎÁõµÇ¾î ÀÖ±â ¶§¹®¿¡
-		//   Çã¿ë
+		//7. User Role ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//   ï¿½ï¿½ï¿½
 		if( role == Auth.Role.USER ) {
 			return true;
 		}
 		
-		// 8. Admin Role Á¢±Ù Ã¼Å©
-		// 'ADMIN' ±ÇÇÑÀÌ ¾ø´Â »ç¿ëÀÚ¸é
-		// main È­¸éÀ¸·Î ¸®´ÙÀÌ·ºÆ®
+		// 8. Admin Role ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
+		// 'ADMIN' ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½
+		// main È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½Æ®
 		if( authUser.getRole().equals( "ADMIN" ) == false ) {
 			response.sendRedirect( request.getContextPath() + "/user/wrongaccess" );
 			return false;
 		}
 		
-		//9. Admin Role Á¢±Ù Çã¿ë
+		//9. Admin Role ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		return true;
 	}
 }

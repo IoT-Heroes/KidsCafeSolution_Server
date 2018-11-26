@@ -6,8 +6,8 @@ public class UserVo {
 	private String phoneNumber;
 	private int visitCounter;
 
-	private String token; // push¸¦ º¸³»±â À§ÇØ.. ÇÊ¿äÇÑ°¡ »ı°¢ÇØº¸°í °áÁ¤
-	private String role; // ÀÏ¹İ»ç¿ëÀÚÀÎÁö, °ü¸®ÀÚÀÎÁö ±¸ºĞÇÏ±â À§ÇØ »ç¿ë
+	private String token; // pushë¥¼ ë³´ë‚´ê¸° ìœ„í•´.. í•„ìš”í•œê°€ ìƒê°í•´ë³´ê³  ê²°ì •
+	private String role; // ì¼ë°˜ì‚¬ìš©ìì¸ì§€, ê´€ë¦¬ìì¸ì§€ êµ¬ë¶„í•˜ê¸° ìœ„í•´ ì‚¬ìš©
 
 	public String getId() {
 		return id;

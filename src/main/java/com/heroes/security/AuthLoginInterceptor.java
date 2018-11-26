@@ -36,14 +36,14 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 			return false;
 		}
 		
-/*		//½ÂÀÎ¹ÞÁö ¾ÊÀº È¸¿øÀÏ°æ¿ì
+/*		//ï¿½ï¿½ï¿½Î¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½Ï°ï¿½ï¿½
 		if( userVo.getIsAuthority().equals("N")) {
 			response.sendRedirect( request.getContextPath() + "/user/notapproval" );
 			return false;
 			
 		}*/
 		
-		// session Ã³¸®
+		// session Ã³ï¿½ï¿½
 		HttpSession session = request.getSession( true );
 		session.setAttribute( "authUser", userVo );
 		response.sendRedirect( request.getContextPath()+"/board" );
