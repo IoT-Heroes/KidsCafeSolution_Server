@@ -3,10 +3,10 @@ package com.heroes.vo;
 public class UserVo {
 	private String id;
 	private String name;
+	private String password;
 	private String phoneNumber;
-	private int visitCounter;
-
-	private String token; // push를 보내기 위해.. 필요한가 생각해보고 결정
+	private String isAuthor;
+	private String token;
 	private String role; // 일반사용자인지, 관리자인지 구분하기 위해 사용
 
 	public String getId() {
@@ -25,6 +25,14 @@ public class UserVo {
 		this.name = name;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
@@ -33,12 +41,12 @@ public class UserVo {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getVisitCounter() {
-		return visitCounter;
+	public String getIsAuthor() {
+		return isAuthor;
 	}
 
-	public void setVisitCounter(int visitCounter) {
-		this.visitCounter = visitCounter;
+	public void setIsAuthor(String isAuthor) {
+		this.isAuthor = isAuthor;
 	}
 
 	public String getToken() {
