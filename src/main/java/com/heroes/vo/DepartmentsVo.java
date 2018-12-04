@@ -1,15 +1,15 @@
 package com.heroes.vo;
 
 public class DepartmentsVo {
-	private int department_id;
+	private int departmentId;
 	private String name;
 
-	public int getDepartment_id() {
-		return department_id;
+	public int getDepartmentId() {
+		return departmentId;
 	}
 
-	public void setDepartment_id(int department_id) {
-		this.department_id = department_id;
+	public void setDepartmentId(int departmentId) {
+		this.departmentId = departmentId;
 	}
 
 	public String getName() {

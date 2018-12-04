@@ -1,6 +1,6 @@
 package com.heroes.vo;
 
-public class ZoneCoordinate {
+public class ZoneCoordinateVo {
 	private String zoneId;
 	private String xCoordinate;
 	private String yCoordinate;

@@ -1,6 +1,6 @@
 package com.heroes.vo;
 
-public class ZoneDevice {
+public class ZoneDeviceVo {
 	private String id;
 	private String zoneId;
 

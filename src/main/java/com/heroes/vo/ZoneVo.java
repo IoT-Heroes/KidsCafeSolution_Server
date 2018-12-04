@@ -1,6 +1,6 @@
 package com.heroes.vo;
 
-public class Zone {
+public class ZoneVo {
 
 	private String id;
 	private String name;

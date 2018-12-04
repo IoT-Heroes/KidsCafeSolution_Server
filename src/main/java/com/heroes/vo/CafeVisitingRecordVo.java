@@ -1,6 +1,6 @@
 package com.heroes.vo;
 
-public class CafeVisitingRecord {
+public class CafeVisitingRecordVo {
 
 	private String childId;
 	private String startTime;

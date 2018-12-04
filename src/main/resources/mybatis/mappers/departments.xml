@@ -7,9 +7,9 @@
 		SELECT department_id, name FROM DEPARTMENTS
 		WHERE 1 = 1
 		 
-		<if test="department_id != ''">
+		<if test="departmentId != ''">
 		  <![CDATA[	
-			  	AND   department_id = #{department_id}
+			  	AND   department_id = #{departmentId}
 			  	]]>
 		</if>
 
