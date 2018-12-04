@@ -4,10 +4,10 @@ public class ZoneVo {
 
 	private String id;
 	private String name;
-	private int maxCapacity;
-	private int currentUsingCount;
-	private int limitAge;
-	private int stateCode;
+	private String maxCapacity;
+	private String currentUsingCount;
+	private String limitAge;
+	private String stateCode;
 
 	public String getId() {
 		return id;
@@ -25,35 +25,35 @@ public class ZoneVo {
 		this.name = name;
 	}
 
-	public int getMaxCapacity() {
+	public String getMaxCapacity() {
 		return maxCapacity;
 	}
 
-	public void setMaxCapacity(int maxCapacity) {
+	public void setMaxCapacity(String maxCapacity) {
 		this.maxCapacity = maxCapacity;
 	}
 
-	public int getCurrentUsingCount() {
+	public String getCurrentUsingCount() {
 		return currentUsingCount;
 	}
 
-	public void setCurrentUsingCount(int currentUsingCount) {
+	public void setCurrentUsingCount(String currentUsingCount) {
 		this.currentUsingCount = currentUsingCount;
 	}
 
-	public int getLimitAge() {
+	public String getLimitAge() {
 		return limitAge;
 	}
 
-	public void setLimitAge(int limitAge) {
+	public void setLimitAge(String limitAge) {
 		this.limitAge = limitAge;
 	}
 
-	public int getStateCode() {
+	public String getStateCode() {
 		return stateCode;
 	}
 
-	public void setStateCode(int stateCode) {
+	public void setStateCode(String stateCode) {
 		this.stateCode = stateCode;
 	}
 

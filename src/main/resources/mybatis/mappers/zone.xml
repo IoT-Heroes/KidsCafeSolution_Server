@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="zone">
+
+	<select id="selectOne" resultType="zonevo">
+		SELECT ID,NAME,MAX_CAPACITY MAXCAPACITY,CURRENT_USING_COUNT CURRENTUSINGCOUNT,LIMIT_AGE LIMITAGE,STATE_CODE STATECODE
+		FROM ZONE
+		WHERE 1 = 1
+		<if test="id != ''">
+		  <![CDATA[	
+	  		AND   id = #{id}
+		  	]]>
+		</if>
+	</select>
+
+	<select id="selectList" resultType="zonevo">
+		SELECT ID,NAME,MAX_CAPACITY MAXCAPACITY,CURRENT_USING_COUNT CURRENTUSINGCOUNT,LIMIT_AGE LIMITAGE,STATE_CODE STATECODE
+		FROM ZONE
+	</select>
+
+</mapper>
