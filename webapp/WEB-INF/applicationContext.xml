@@ -101,16 +101,20 @@
 	</bean>
 
 	<!-- 테스트용 스케줄러 -->
+	
+	<!-- 
 	<bean id="testJobScheduler"
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
-			<!-- 앞에서 설정한 트리거를 등록합니다. 필요하면 여러개 만들어서 등록하면 됩니다. -->
+			앞에서 설정한 트리거를 등록합니다. 필요하면 여러개 만들어서 등록하면 됩니다.
 			<list>
 				<ref bean="testJobTrigger" />
 				<ref bean="testJobTrigger2" />
 			</list>
 		</property>
 	</bean>
+	
+	 -->
 	<!-- QUARTZ -->
 
 </beans>

@@ -12,9 +12,8 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	public boolean join( UserVo userVo ) {
-	//	return userDao.insert( userVo ) == 1;
-		return true;
+	public int insert( UserVo userVo ) {
+		return userDao.insert( userVo ) ;
 	}
 	
 	public UserVo getUser(String no) {
