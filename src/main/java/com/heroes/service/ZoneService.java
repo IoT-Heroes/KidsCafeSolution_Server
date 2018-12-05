@@ -24,7 +24,7 @@ public class ZoneService {
     if (resultZone != null) {
       ZoneCoordinateVo zoneCoordinateVo = new ZoneCoordinateVo();
       zoneCoordinateVo.setZoneId(resultZone.getId());
-      resultZone.setCoordinates((ArrayList<ZoneCoordinateVo>) zoneCoordinateDao.selectList(zoneCoordinateVo));
+      resultZone.setCoordinates((ArrayList<ZoneCoordinateVo>) zoneCoordinateDao.selectListByZoneId(zoneCoordinateVo));
     }
     return resultZone;
 
@@ -37,7 +37,7 @@ public class ZoneService {
     for (ZoneVo zoneVo : zoneVoList) {
       ZoneCoordinateVo zoneCoordinateVo = new ZoneCoordinateVo();
       zoneCoordinateVo.setZoneId(zoneVo.getId());
-      zoneVo.setCoordinates((ArrayList<ZoneCoordinateVo>) zoneCoordinateDao.selectList(zoneCoordinateVo));
+      zoneVo.setCoordinates((ArrayList<ZoneCoordinateVo>) zoneCoordinateDao.selectListByZoneId(zoneCoordinateVo));
     }
 
     return zoneVoList;

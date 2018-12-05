@@ -3,7 +3,7 @@
 
 <mapper namespace="zonecoordinate">
 
-	<select id="selectList" resultType="zonecoordinatevo">
+	<select id="selectListByZoneId" resultType="zonecoordinatevo">
 		SELECT ZONE_ID ZONEID,X_COORDINATE XCOORDINATE,Y_COORDINATE YCOORDINATE
 		FROM ZONE_COORDINATE
 		WHERE ZONE_ID = #{zoneId}

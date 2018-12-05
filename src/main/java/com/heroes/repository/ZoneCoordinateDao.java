@@ -11,7 +11,7 @@ public class ZoneCoordinateDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<ZoneCoordinateVo> selectList(ZoneCoordinateVo zoneCoordinateVo) {
-		return sqlSession.selectList("zonecoordinate.selectList", zoneCoordinateVo);
+	public List<ZoneCoordinateVo> selectListByZoneId(ZoneCoordinateVo zoneCoordinateVo) {
+		return sqlSession.selectList("zonecoordinate.selectListByZoneId", zoneCoordinateVo);
 	}
 }

@@ -16,7 +16,7 @@ public class ZoneCoordinate {
   @Autowired
   private ZoneCoordinateDao zoneCoordinateDao;
 
-  public List<ZoneCoordinateVo> selectList(ZoneCoordinateVo zoneCoordinateVo) {
-    return zoneCoordinateDao.selectList(zoneCoordinateVo);
+  public List<ZoneCoordinateVo> selectListByZoneId(ZoneCoordinateVo zoneCoordinateVo) {
+    return zoneCoordinateDao.selectListByZoneId(zoneCoordinateVo);
   }
 }
