@@ -1,5 +1,7 @@
 package com.heroes.vo;
 
+import java.util.ArrayList;
+
 public class UserVo {
 	private String id;
 	private String name;
@@ -8,6 +10,9 @@ public class UserVo {
 	private String isAuthor;
 	private String token;
 	private String role; // 일반사용자인지, 관리자인지 구분하기 위해 사용
+
+	private ArrayList<ChildVo> child;
+	
 
 	public String getId() {
 		return id;
@@ -63,6 +68,14 @@ public class UserVo {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public ArrayList<ChildVo> getChild() {
+		return child;
+	}
+
+	public void setChild(ArrayList<ChildVo> child) {
+		this.child = child;
 	}
 
 }

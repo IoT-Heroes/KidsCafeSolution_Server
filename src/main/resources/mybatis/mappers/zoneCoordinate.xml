@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="zonecoordinate">
+
+	<select id="selectList" resultType="zonecoordinatevo">
+		SELECT ZONE_ID ZONEID,X_COORDINATE XCOORDINATE,Y_COORDINATE YCOORDINATE
+		FROM ZONE_COORDINATE
+		WHERE ZONE_ID = #{zoneId}
+
+	</select>
+
+</mapper>

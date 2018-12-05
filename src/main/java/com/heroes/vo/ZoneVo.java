@@ -1,5 +1,7 @@
 package com.heroes.vo;
 
+import java.util.ArrayList;
+
 public class ZoneVo {
 
 	private String id;
@@ -9,12 +11,14 @@ public class ZoneVo {
 	private String limitAge;
 	private String stateCode;
 
-	public String getId() {
-		return id;
-	}
+	private ArrayList<ZoneCoordinateVo> coordinates;
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -55,6 +59,14 @@ public class ZoneVo {
 
 	public void setStateCode(String stateCode) {
 		this.stateCode = stateCode;
+	}
+
+	public ArrayList<ZoneCoordinateVo> getCoordinates() {
+		return coordinates;
+	}
+
+	public void setCoordinates(ArrayList<ZoneCoordinateVo> coordinates) {
+		this.coordinates = coordinates;
 	}
 
 }

@@ -2,20 +2,21 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="departmentsvo" type="com.heroes.vo.DepartmentsVo"/>
-		<typeAlias alias="banddevicevo" type="com.heroes.vo.BandDeviceVo"/>
-		<typeAlias alias="cafevisitingrecordvo" type="com.heroes.vo.CafeVisitingRecordVo"/>
-		<typeAlias alias="childvo" type="com.heroes.vo.ChildVo"/>
-		<typeAlias alias="uservo" type="com.heroes.vo.UserVo"/>
-		<typeAlias alias="zonecoordinatevo" type="com.heroes.vo.ZoneCoordinateVo"/>
-		<typeAlias alias="zonedevicevo" type="com.heroes.vo.ZoneDeviceVo"/>
-		<typeAlias alias="zonevo" type="com.heroes.vo.ZoneVo"/>
-    </typeAliases>	
-	
+		<typeAlias alias="departmentsvo" type="com.heroes.vo.DepartmentsVo" />
+		<typeAlias alias="banddevicevo" type="com.heroes.vo.BandDeviceVo" />
+		<typeAlias alias="cafevisitingrecordvo" type="com.heroes.vo.CafeVisitingRecordVo" />
+		<typeAlias alias="childvo" type="com.heroes.vo.ChildVo" />
+		<typeAlias alias="uservo" type="com.heroes.vo.UserVo" />
+		<typeAlias alias="zonecoordinatevo" type="com.heroes.vo.ZoneCoordinateVo" />
+		<typeAlias alias="zonedevicevo" type="com.heroes.vo.ZoneDeviceVo" />
+		<typeAlias alias="zonevo" type="com.heroes.vo.ZoneVo" />
+	</typeAliases>
+
 	<mappers>
-		<mapper resource="mybatis/mappers/departments.xml"/>
-		<mapper resource="mybatis/mappers/user.xml"/>
-		<mapper resource="mybatis/mappers/zone.xml"/>
+		<mapper resource="mybatis/mappers/departments.xml" />
+		<mapper resource="mybatis/mappers/user.xml" />
+		<mapper resource="mybatis/mappers/zone.xml" />
+		<mapper resource="mybatis/mappers/zoneCoordinate.xml" />
 	</mappers>
-	
+
 </configuration>
