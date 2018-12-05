@@ -3,7 +3,7 @@
 
 <mapper namespace="user">
 
-	<insert id="insertUser">
+	<insert id="insert">
 		<![CDATA[
 			INSERT INTO K_USER 
 				(ID,NAME,PASSWORD,PHONE_NUMBER) 

@@ -16,6 +16,7 @@
 		<mapper resource="mybatis/mappers/child.xml" />
 		<mapper resource="mybatis/mappers/zone.xml" />
 		<mapper resource="mybatis/mappers/zoneCoordinate.xml" />
+		<mapper resource="mybatis/mappers/cafeVisitingRecord.xml" />
 	</mappers>
 
 </configuration>

@@ -1,5 +1,7 @@
 package com.heroes.vo;
 
+import java.util.List;
+
 public class ChildVo {
 
   private String id;
@@ -13,6 +15,35 @@ public class ChildVo {
   private int age;
   private int height;
   private int weight;
+  
+  
+  private List<FoodVo> eatableFoodList;
+  private CafeVisitingRecordVo currentCafeVisitingRecord;
+  private List<CafeVisitingRecordVo> cafeVisitingRecord;
+  
+  public List<FoodVo> getEatableFoodList() {
+    return eatableFoodList;
+  }
+
+  public void setEatableFoodList(List<FoodVo> eatableFoodList) {
+    this.eatableFoodList = eatableFoodList;
+  }
+
+  public CafeVisitingRecordVo getCurrentCafeVisitingRecord() {
+    return currentCafeVisitingRecord;
+  }
+
+  public void setCurrentCafeVisitingRecord(CafeVisitingRecordVo currentCafeVisitingRecord) {
+    this.currentCafeVisitingRecord = currentCafeVisitingRecord;
+  }
+
+  public List<CafeVisitingRecordVo> getCafeVisitingRecord() {
+    return cafeVisitingRecord;
+  }
+
+  public void setCafeVisitingRecord(List<CafeVisitingRecordVo> cafeVisitingRecord) {
+    this.cafeVisitingRecord = cafeVisitingRecord;
+  }
 
   public String getId() {
     return id;

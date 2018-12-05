@@ -38,9 +38,6 @@ public class ChildManagementController {
        }else {
          return ResponseEntity.ok(JSONResult.success(childVoList,"success"));
        }
-         
-    
-
   }
   
 
