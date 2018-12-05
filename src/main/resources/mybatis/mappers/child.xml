@@ -4,16 +4,16 @@
 <mapper namespace="child">
 
 	<select id="selectListByParentKey" resultType="childvo">
-		SELECT 
-				ID,
-				USER_ID USERID,
-				NAME,
-				TARGET_ACTIVITY_FIGURE TARGETACTIVITYFIGURE, 
-				AGE, 
-				HEIGHT, 
-				WEIGHT,
-				SEX,
-				IS_BAND_WEARING ISBANDWEARING
+		SELECT
+		ID,
+		USER_ID USERID,
+		NAME,
+		TARGET_ACTIVITY_FIGURE TARGETACTIVITYFIGURE,
+		AGE,
+		HEIGHT,
+		WEIGHT,
+		SEX,
+		IS_BAND_WEARING ISBANDWEARING
 		FROM K_CHILD
 		WHERE 1 = 1
 		<if test="parentId != ''">
@@ -22,5 +22,14 @@
 		  	]]>
 		</if>
 	</select>
+
+	<insert id="insertChild">
+		<![CDATA[
+			INSERT INTO K_CHILD 
+				(ID,USER_ID,NAME,TARGET_ACTIVITY_FIGURE,AGE,HEIGHT,WEIGHT,SEX) 
+			VALUES 
+				(#{id},	#{userId}, #{name}, #{targetActivityFigure}, #{age}, #{height}, #{weight}, #{sex}) 
+		]]>
+	</insert>
 
 </mapper>

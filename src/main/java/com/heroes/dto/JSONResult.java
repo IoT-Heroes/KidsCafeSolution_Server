@@ -1,9 +1,9 @@
 package com.heroes.dto;
 
 public class JSONResult {
-  private String result; // "success" or "fail"
-  private String message; // result �� "fail"�� ��� ���� �޼���
-  private Object data; // result �� "success"�� ��� ������ ������
+  private String result; 
+  private String message; 
+  private Object data; 
 
   private JSONResult(String result, String message, Object data) {
     this.result = result;

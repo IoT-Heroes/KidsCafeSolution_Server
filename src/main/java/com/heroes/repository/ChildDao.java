@@ -15,4 +15,8 @@ public class ChildDao {
   public List<ChildVo> selectListByParentKey(ChildVo childVo) {
     return sqlSession.selectList("child.selectListByParentKey", childVo);
   }
+
+  public int insert(ChildVo childVo) {
+    return sqlSession.insert("child.insertChild", childVo);
+  }
 }

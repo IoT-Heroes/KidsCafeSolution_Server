@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,7 +26,7 @@ public class UserManagementController {
 
   @ResponseBody
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
-  public ResponseEntity<Object> insert(@ModelAttribute UserVo userVo) {
+  public ResponseEntity<Object> insert(@RequestBody UserVo userVo) {
     if (userService.insert(userVo) == 1) {
       return ResponseEntity.ok(JSONResult.success(userVo));
     } else {
@@ -36,7 +37,7 @@ public class UserManagementController {
   
   @ResponseBody
   @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public ResponseEntity<Object> login(@ModelAttribute UserVo userVo) {
+  public ResponseEntity<Object> login(@RequestBody  UserVo userVo) {
     UserVo resultUserVo = userService.login(userVo);
     if (resultUserVo != null) {
       return ResponseEntity.ok(JSONResult.success(resultUserVo,"login success"));
