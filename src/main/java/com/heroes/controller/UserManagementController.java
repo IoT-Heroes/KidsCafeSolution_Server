@@ -33,6 +33,20 @@ public class UserManagementController {
     }
 
   }
+  
+  @ResponseBody
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
+  public ResponseEntity<Object> login(@ModelAttribute UserVo userVo) {
+    UserVo resultUserVo = userService.login(userVo);
+    if (resultUserVo != null) {
+      return ResponseEntity.ok(JSONResult.success(resultUserVo,"login success"));
+    } else {
+      return ResponseEntity.ok(JSONResult.success(userVo,"login fail"));
+    }
+
+  }
+  
+  
 
   @ResponseBody
   @RequestMapping(value = "/select", method = RequestMethod.GET)

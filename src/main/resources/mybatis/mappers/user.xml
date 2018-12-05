@@ -12,6 +12,16 @@
 		]]>
 	</insert>
 
+	<select id="login" resultType="uservo">
+		SELECT ID,NAME,PHONE_NUMBER PHONENUMBER, IS_AUTHOR ISAUTHOR, TOKEN
+		FROM K_USER
+		WHERE 1 = 1
+  		AND ID = #{id}
+  		AND PASSWORD = #{password}
+		
+	</select>
+
+
 	<select id="selectOne" resultType="uservo">
 		SELECT ID,NAME,PHONE_NUMBER PHONENUMBER, IS_AUTHOR ISAUTHOR, TOKEN
 		FROM K_USER

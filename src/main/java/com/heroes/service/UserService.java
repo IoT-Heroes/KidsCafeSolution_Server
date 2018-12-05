@@ -21,6 +21,13 @@ public class UserService {
   public int insert(UserVo userVo) {
     return userDao.insert(userVo);
   }
+  
+  public UserVo login(UserVo userVo) {
+    UserVo resultUser = userDao.login(userVo);
+    return resultUser;
+
+  }
+  
 
   public UserVo selectOne(UserVo userVo) {
 
