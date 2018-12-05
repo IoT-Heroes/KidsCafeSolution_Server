@@ -12,4 +12,19 @@
 		]]>
 	</insert>
 
+	<select id="selectOne" resultType="uservo">
+		SELECT ID,NAME,PHONE_NUMBER PHONENUMBER, IS_AUTHOR ISAUTHOR, TOKEN
+		FROM K_USER
+		WHERE 1 = 1
+		<if test="id != ''">
+		  <![CDATA[	
+	  		AND   id = #{id}
+		  	]]>
+		</if>
+	</select>
+
+	<select id="selectList" resultType="uservo">
+		SELECT ID,NAME,PASSWORD,PHONE_NUMBER PHONENUMBER, IS_AUTHOR ISAUTHOR, TOKEN
+		FROM K_USER
+	</select>
 </mapper>

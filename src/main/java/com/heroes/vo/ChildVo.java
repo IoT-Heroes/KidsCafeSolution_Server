@@ -2,87 +2,98 @@ package com.heroes.vo;
 
 public class ChildVo {
 
-	private String id;
-	private String userId;
-	private String name;
-	private String isBandWearing;
+  private String id;
+  private String parentId;
+  private String userId;
+  private String name;
+  private String isBandWearing;
+  private String sex;
 
-	private int targetActivityFigure;
-	private int age;
-	private int height;
-	private int weight;
-	private int sex;
+  private int targetActivityFigure;
+  private int age;
+  private int height;
+  private int weight;
 
-	public String getId() {
-		return id;
-	}
+  public String getId() {
+    return id;
+  }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	public String getUserId() {
-		return userId;
-	}
+  public String getParentId() {
+    return parentId;
+  }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+  public void setParentId(String parentId) {
+    this.parentId = parentId;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public String getUserId() {
+    return userId;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
 
-	public String getIsBandWearing() {
-		return isBandWearing;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setIsBandWearing(String isBandWearing) {
-		this.isBandWearing = isBandWearing;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public int getTargetActivityFigure() {
-		return targetActivityFigure;
-	}
+  public String getIsBandWearing() {
+    return isBandWearing;
+  }
 
-	public void setTargetActivityFigure(int targetActivityFigure) {
-		this.targetActivityFigure = targetActivityFigure;
-	}
+  public void setIsBandWearing(String isBandWearing) {
+    this.isBandWearing = isBandWearing;
+  }
 
-	public int getAge() {
-		return age;
-	}
+  public String getSex() {
+    return sex;
+  }
 
-	public void setAge(int age) {
-		this.age = age;
-	}
+  public void setSex(String sex) {
+    this.sex = sex;
+  }
 
-	public int getHeight() {
-		return height;
-	}
+  public int getTargetActivityFigure() {
+    return targetActivityFigure;
+  }
 
-	public void setHeight(int height) {
-		this.height = height;
-	}
+  public void setTargetActivityFigure(int targetActivityFigure) {
+    this.targetActivityFigure = targetActivityFigure;
+  }
 
-	public int getWeight() {
-		return weight;
-	}
+  public int getAge() {
+    return age;
+  }
 
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
+  public void setAge(int age) {
+    this.age = age;
+  }
 
-	public int getSex() {
-		return sex;
-	}
+  public int getHeight() {
+    return height;
+  }
 
-	public void setSex(int sex) {
-		this.sex = sex;
-	}
+  public void setHeight(int height) {
+    this.height = height;
+  }
+
+  public int getWeight() {
+    return weight;
+  }
+
+  public void setWeight(int weight) {
+    this.weight = weight;
+  }
+
+
 
 }

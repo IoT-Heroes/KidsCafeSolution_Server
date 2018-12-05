@@ -20,11 +20,12 @@ public class ZoneService {
   public ZoneVo selectOne(ZoneVo zoneVo) {
 
     ZoneVo resultZone = zoneDao.selectOne(zoneVo);
-        
-    ZoneCoordinateVo zoneCoordinateVo = new ZoneCoordinateVo();
-    zoneCoordinateVo.setZoneId(resultZone.getId());
-    resultZone.setCoordinates((ArrayList<ZoneCoordinateVo>) zoneCoordinateDao.selectList(zoneCoordinateVo));
-    
+
+    if (resultZone != null) {
+      ZoneCoordinateVo zoneCoordinateVo = new ZoneCoordinateVo();
+      zoneCoordinateVo.setZoneId(resultZone.getId());
+      resultZone.setCoordinates((ArrayList<ZoneCoordinateVo>) zoneCoordinateDao.selectList(zoneCoordinateVo));
+    }
     return resultZone;
 
   }
