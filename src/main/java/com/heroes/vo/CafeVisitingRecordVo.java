@@ -5,12 +5,21 @@ import java.sql.Date;
 public class CafeVisitingRecordVo {
 
   private String childId;
+  private String childName;
   private Date startTime;
   private Date endTime;
   private String bandDeviceId;
   private int amountPrice;
   private int amountRest;
   private int usingTime; // default 2
+
+  public String getChildName() {
+    return childName;
+  }
+
+  public void setChildName(String childName) {
+    this.childName = childName;
+  }
 
   public String getChildId() {
     return childId;

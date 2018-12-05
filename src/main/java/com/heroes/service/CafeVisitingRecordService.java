@@ -1,5 +1,6 @@
 package com.heroes.service;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.heroes.repository.CafeVisitingRecordDao;
@@ -15,6 +16,9 @@ public class CafeVisitingRecordService {
     return cafeVisitingRecordDao.insert(cafeVisitingRecordVo);
   }
   
+  public List<CafeVisitingRecordVo> selectList(CafeVisitingRecordVo cafeVisitingRecordVo) {
 
+    return cafeVisitingRecordDao.selectList(cafeVisitingRecordVo);
+  }
 
 }
