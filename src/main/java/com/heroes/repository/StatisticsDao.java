@@ -15,9 +15,56 @@ public class StatisticsDao {
   public List<StatisticsVo> selectAirStateHourList(StatisticsVo statisticsVo) {
     return sqlSession.selectList("statistics.selectAirStateHourList", statisticsVo);
   }
-  
+
   public List<StatisticsVo> selectAirStateDayList(StatisticsVo statisticsVo) {
     return sqlSession.selectList("statistics.selectAirStateDayList", statisticsVo);
   }
-  
+
+
+  public List<StatisticsVo> selectChildActivityHourList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectChildActivityHourList", statisticsVo);
+  }
+
+  public List<StatisticsVo> selectChildActivityDayList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectChildActivityDayList", statisticsVo);
+  }
+
+
+  public List<StatisticsVo> selectChildPulseMinuteList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectChildPulseMinuteList", statisticsVo);
+  }
+
+  public List<StatisticsVo> selectChildPulseDayList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectChildPulseDayList", statisticsVo);
+  }
+
+
+  public List<StatisticsVo> selectIncomeHourList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectAirStateHourList", statisticsVo);
+  }
+
+  public List<StatisticsVo> selectIncomeDayList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectIncomeDayList", statisticsVo);
+  }
+
+
+  public List<StatisticsVo> selectUsingFrequencyHourList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectUsingFrequencyHourList", statisticsVo);
+  }
+
+  public List<StatisticsVo> selectUsingFrequencyList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectUsingFrequencyList", statisticsVo);
+  }
+
+
+  public List<StatisticsVo> selectZoneFrequencyHourList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectZoneFrequencyHourList", statisticsVo);
+  }
+
+  public List<StatisticsVo> selectZoneFrequencyDayList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectZoneFrequencyDayList", statisticsVo);
+  }
+
+
+
 }
