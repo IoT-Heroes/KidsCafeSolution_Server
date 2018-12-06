@@ -16,14 +16,13 @@
 		SELECT ID,NAME,PHONE_NUMBER PHONENUMBER, IS_AUTHOR ISAUTHOR, TOKEN
 		FROM K_USER
 		WHERE 1 = 1
-  		AND ID = #{id}
-  		AND PASSWORD = #{password}
-		
+		AND ID = #{id}
+		AND PASSWORD = #{password}
+
 	</select>
 
-
-	<select id="selectOne" resultType="uservo">
-		SELECT ID,NAME,PHONE_NUMBER PHONENUMBER, IS_AUTHOR ISAUTHOR, TOKEN
+	<select id="selectList" resultType="uservo">
+		SELECT ID,NAME,PASSWORD,PHONE_NUMBER PHONENUMBER, IS_AUTHOR ISAUTHOR, TOKEN
 		FROM K_USER
 		WHERE 1 = 1
 		<if test="id != ''">
@@ -31,10 +30,5 @@
 	  		AND   id = #{id}
 		  	]]>
 		</if>
-	</select>
-
-	<select id="selectList" resultType="uservo">
-		SELECT ID,NAME,PASSWORD,PHONE_NUMBER PHONENUMBER, IS_AUTHOR ISAUTHOR, TOKEN
-		FROM K_USER
 	</select>
 </mapper>

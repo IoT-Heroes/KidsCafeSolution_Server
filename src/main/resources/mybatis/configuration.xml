@@ -10,6 +10,7 @@
 		<typeAlias alias="zonedevicevo" type="com.heroes.vo.ZoneDeviceVo" />
 		<typeAlias alias="zonevo" type="com.heroes.vo.ZoneVo" />
 		<typeAlias alias="statisticsvo" type="com.heroes.vo.StatisticsVo" />
+		<typeAlias alias="foodvo" type="com.heroes.vo.FoodVo" />
 	</typeAliases>
 
 	<mappers>

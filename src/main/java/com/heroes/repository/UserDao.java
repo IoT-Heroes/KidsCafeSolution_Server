@@ -20,13 +20,10 @@ public class UserDao {
   public UserVo login(UserVo userVo) {
     return sqlSession.selectOne("user.login", userVo);
   }
-  
-  public UserVo selectOne(UserVo userVo) {
-    return sqlSession.selectOne("user.selectOne", userVo);
-  }
 
-  public List<UserVo> selectList() {
-    return sqlSession.selectList("user.selectList");
+
+  public List<UserVo> selectList(UserVo userVo) {
+    return sqlSession.selectList("user.selectList", userVo);
   }
 
 }

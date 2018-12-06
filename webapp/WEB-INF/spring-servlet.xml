@@ -39,7 +39,16 @@
 	</mvc:annotation-driven>
 
 	<!-- Interceptors -->
-	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/user/auth"/> <bean class="com.heroes.security.AuthLoginInterceptor"/> </mvc:interceptor> <mvc:interceptor> <mvc:mapping path="/user/logout"/> <bean class="com.heroes.security.AuthLogoutInterceptor"/> </mvc:interceptor> <mvc:interceptor> <mvc:mapping path="/**"/> <mvc:exclude-mapping path="/user/auth"/> <mvc:exclude-mapping path="/user/logout"/> <mvc:exclude-mapping path="/assets/**"/> <bean class="com.heroes.security.AuthInterceptor"/> </mvc:interceptor> </mvc:interceptors> -->
+	<mvc:interceptors>
+		<!-- <mvc:interceptor> <mvc:mapping path="/user/auth" /> <bean class="com.heroes.security.AuthLoginInterceptor" /> </mvc:interceptor> <mvc:interceptor> <mvc:mapping path="/user/logout" /> <bean class="com.heroes.security.AuthLogoutInterceptor" /> </mvc:interceptor> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/user/auth" />
+			<mvc:exclude-mapping path="/user/logout" />
+			<mvc:exclude-mapping path="/assets/**" />
+			<bean class="com.heroes.security.AuthInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
@@ -49,7 +58,7 @@
 	<context:annotation-config />
 
 	<context:component-scan base-package="com.heroes.controller" />
-	
+
 	<bean id="swagger2Config" class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration"></bean>
 	<mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"></mvc:resources>
 	<mvc:resources location="classpath:/META-INF/resources/webjars/" mapping="/webjars/**"></mvc:resources>

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.heroes.repository.ChildDao;
 import com.heroes.vo.ChildVo;
+import com.heroes.vo.FoodVo;
 
 @Service
 public class ChildService {
@@ -31,4 +32,13 @@ public class ChildService {
     return insertCounter;
   }
 
+  public List<ChildVo> selectList(ChildVo childVo) {
+    List<ChildVo> childVoList = childDao.selectList(childVo);
+    for (ChildVo resChildVo : childVoList) {
+      List<FoodVo> eatableFoodList = childDao.selectEatableFoodList(childVo);
+      resChildVo.setEatableFoodList(eatableFoodList);
+    }
+
+    return childVoList;
+  }  
 }

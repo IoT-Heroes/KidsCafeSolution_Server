@@ -3,7 +3,16 @@
 
 <mapper namespace="child">
 
-	<select id="selectListByParentKey" resultType="childvo">
+	<insert id="insertChild">
+		<![CDATA[
+			INSERT INTO K_CHILD 
+				(ID,USER_ID,NAME,TARGET_ACTIVITY_FIGURE,AGE,HEIGHT,WEIGHT,SEX) 
+			VALUES 
+				(#{id},	#{userId}, #{name}, #{targetActivityFigure}, #{age}, #{height}, #{weight}, #{sex}) 
+		]]>
+	</insert>
+
+	<select id="selectList" resultType="childvo">
 		SELECT
 		ID,
 		USER_ID USERID,
@@ -16,20 +25,34 @@
 		IS_BAND_WEARING ISBANDWEARING
 		FROM K_CHILD
 		WHERE 1 = 1
-		<if test="parentId != ''">
+		<if test="userId != '' and userId != null">
 		  <![CDATA[	
 	  		AND   USER_ID = #{userId}
 		  	]]>
 		</if>
+
+		<if test="id != '' and id!=null">
+		  <![CDATA[	
+	  		AND   ID = #{id}
+		  	]]>
+		</if>
+
+
 	</select>
 
-	<insert id="insertChild">
-		<![CDATA[
-			INSERT INTO K_CHILD 
-				(ID,USER_ID,NAME,TARGET_ACTIVITY_FIGURE,AGE,HEIGHT,WEIGHT,SEX) 
-			VALUES 
-				(#{id},	#{userId}, #{name}, #{targetActivityFigure}, #{age}, #{height}, #{weight}, #{sex}) 
-		]]>
-	</insert>
+	<select id="selectEatableFoodList" resultType="foodvo">
+		SELECT
+		(SELECT NAME FROM FOOD WHERE ID = FOOD_ID) AS NAME,
+		(SELECT CALORIE FROM FOOD WHERE ID = FOOD_ID) AS CALORIE,
+		FOOD_ID ID
+		FROM CHILD_EATABLE
+		WHERE 1 = 1
+		<if test="id != ''">
+		  <![CDATA[	
+	  		AND   CHILD_ID = #{id}
+		  	]]>
+		</if>
+	</select>
+
 
 </mapper>

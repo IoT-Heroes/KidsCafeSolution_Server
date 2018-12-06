@@ -21,39 +21,38 @@ public class UserService {
   public int insert(UserVo userVo) {
     return userDao.insert(userVo);
   }
-  
+
   public UserVo login(UserVo userVo) {
     UserVo resultUser = userDao.login(userVo);
-    return resultUser;
-
-  }
-  
-
-  public UserVo selectOne(UserVo userVo) {
-
-    UserVo resultUser = userDao.selectOne(userVo);
-
-    if (resultUser != null) {
-      ChildVo childVo = new ChildVo();
-      childVo.setUserId(resultUser.getId());
-      resultUser.setChild((ArrayList<ChildVo>) childDao.selectListByParentKey(childVo));
-    }
+    setChild(resultUser);
     return resultUser;
 
   }
 
-  public List<UserVo> selectList() {
 
-    List<UserVo> userVoList = userDao.selectList();
 
-    for (UserVo userVo : userVoList) {
-      ChildVo childVo = new ChildVo();
-      childVo.setUserId(userVo.getId());
-      userVo.setChild((ArrayList<ChildVo>) childDao.selectListByParentKey(childVo));
+  public List<UserVo> selectList(UserVo userVo) {
+    List<UserVo> userVoList = userDao.selectList(userVo);
+    for (UserVo resUserVo : userVoList) {
+      setChild(resUserVo);
     }
 
     return userVoList;
   }
 
+  private void setChild(UserVo userVo) {
+
+    if (userVo != null) {
+      ChildVo childVo = new ChildVo();
+      childVo.setUserId(userVo.getId());
+      ArrayList<ChildVo> childList = (ArrayList<ChildVo>) childDao.selectList(childVo);
+      
+      for(ChildVo resChildVo:childList ) {
+        resChildVo.setEatableFoodList(childDao.selectEatableFoodList(resChildVo));
+      }
+      userVo.setChild(childList);
+    }
+
+  }
 
 }
