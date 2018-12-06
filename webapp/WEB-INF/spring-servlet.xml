@@ -33,23 +33,23 @@
 		</mvc:message-converters>
 
 		<!-- argument resolver -->
-		<mvc:argument-resolvers>
+<!-- 		<mvc:argument-resolvers>
 			<bean class="com.heroes.security.AuthUserHandlerMethodArgumentResolver" />
-		</mvc:argument-resolvers>
+		</mvc:argument-resolvers> -->
 	</mvc:annotation-driven>
 
 	<!-- Interceptors -->
-	<mvc:interceptors>
-		<!-- <mvc:interceptor> <mvc:mapping path="/user/auth" /> <bean class="com.heroes.security.AuthLoginInterceptor" /> </mvc:interceptor> <mvc:interceptor> <mvc:mapping path="/user/logout" /> <bean class="com.heroes.security.AuthLogoutInterceptor" /> </mvc:interceptor> -->
+<!-- 	<mvc:interceptors>
+		<mvc:interceptor> <mvc:mapping path="/user/auth" /> <bean class="com.heroes.security.AuthLoginInterceptor" /> </mvc:interceptor> <mvc:interceptor> <mvc:mapping path="/user/logout" /> <bean class="com.heroes.security.AuthLogoutInterceptor" /> </mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/user/auth" />
 			<mvc:exclude-mapping path="/user/logout" />
 			<mvc:exclude-mapping path="/assets/**" />
-			<bean class="com.heroes.security.AuthInterceptor" />
+			<bean class="com.heroes.security.CorsInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-
+ -->
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 핸들러 -->
 	<mvc:default-servlet-handler />
 
