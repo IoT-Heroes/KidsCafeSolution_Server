@@ -20,6 +20,7 @@
 		<mapper resource="mybatis/mappers/zoneCoordinate.xml" />
 		<mapper resource="mybatis/mappers/cafeVisitingRecord.xml" />
 		<mapper resource="mybatis/mappers/statistics.xml" />
+		<mapper resource="mybatis/mappers/data.xml" />
 	</mappers>
 
 </configuration>
