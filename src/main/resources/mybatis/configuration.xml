@@ -9,6 +9,7 @@
 		<typeAlias alias="zonecoordinatevo" type="com.heroes.vo.ZoneCoordinateVo" />
 		<typeAlias alias="zonedevicevo" type="com.heroes.vo.ZoneDeviceVo" />
 		<typeAlias alias="zonevo" type="com.heroes.vo.ZoneVo" />
+		<typeAlias alias="statisticsvo" type="com.heroes.vo.StatisticsVo" />
 	</typeAliases>
 
 	<mappers>
@@ -17,6 +18,7 @@
 		<mapper resource="mybatis/mappers/zone.xml" />
 		<mapper resource="mybatis/mappers/zoneCoordinate.xml" />
 		<mapper resource="mybatis/mappers/cafeVisitingRecord.xml" />
+		<mapper resource="mybatis/mappers/statistics.xml" />
 	</mappers>
 
 </configuration>

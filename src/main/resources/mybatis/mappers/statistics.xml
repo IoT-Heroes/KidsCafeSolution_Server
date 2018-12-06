@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="statistics">
+
+	<select id="selectAirStateHourList" resultType="statisticsvo">
+		SELECT
+		ZONE_ID,
+		DATE,
+		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
+		AVERAGE_CO2 AVERAGECO2,
+		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
+		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
+		AVERAGE_DUST AVERAGEDUST
+		FROM ZONE_AIR_HOUR_STATISTICS
+		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  	AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+
+		<if test="zoneId != ''">
+		  <![CDATA[
+	 	AND ZONE_ID = #{zoneId}
+		  	]]>
+		</if>
+	</select>
+
+	<select id="selectAirStateDayList" resultType="statisticsvo">
+		SELECT
+		ZONE_ID,
+		DATE,
+		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
+		AVERAGE_CO2 AVERAGECO2,
+		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
+		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
+		AVERAGE_DUST AVERAGEDUST
+		FROM ZONE_AIR_DAY_STATISTICS
+		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="zoneId != ''">
+		  <![CDATA[
+	 	AND ZONE_ID = #{zoneId}
+		  	]]>
+		</if>
+	</select>
+
+</mapper>
