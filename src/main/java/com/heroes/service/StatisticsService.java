@@ -77,4 +77,16 @@ public class StatisticsService {
       return statisticsDao.childusingfrequency(statisticsVo);
     }
 
+  public List<StatisticsVo> selectZonefrequency(StatisticsVo statisticsVo) {
+
+    if (statisticsVo.getBatchType().equals("H")) {
+      return statisticsDao.selectZonefrequencyHourList(statisticsVo);
+    } else if (statisticsVo.getBatchType().equals("D")) {
+      return statisticsDao.selectZonefrequencyDayList(statisticsVo);
+
+    } else {
+      return null;
+    }
+  }
+  
 }

@@ -80,9 +80,20 @@ public class StatisticsController {
 })
   @ResponseBody
   @RequestMapping(value = "/childusingfrequency/select", method = RequestMethod.GET)
-  public ResponseEntity<Object> selectZonefrequency(@ModelAttribute StatisticsVo statisticsVo) {
+  public ResponseEntity<Object> selectChildusingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
 
     List<StatisticsVo> results = statisticsService.childusingfrequency(statisticsVo);
+    return ResponseEntity.ok(JSONResult.success(results));
+  }
+  
+  
+  @ApiImplicitParams({@ApiImplicitParam(name = "zoneId", value = "놀이구역ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
+    @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
+  @ResponseBody
+  @RequestMapping(value = "/zonefrequency/select", method = RequestMethod.GET)
+  public ResponseEntity<Object> selectZonefrequency(@ModelAttribute StatisticsVo statisticsVo) {
+
+    List<StatisticsVo> results = statisticsService.selectZonefrequency(statisticsVo);
     return ResponseEntity.ok(JSONResult.success(results));
   }
 
