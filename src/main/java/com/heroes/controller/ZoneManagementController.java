@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.heroes.dto.JSONResult;
 import com.heroes.service.ZoneService;
 import com.heroes.vo.ZoneVo;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 
 @CrossOrigin(origins="*")
 @Controller
@@ -20,7 +22,11 @@ public class ZoneManagementController {
 
 	@Autowired
 	private ZoneService zoneService;
-
+	
+	
+	  @ApiImplicitParams({
+	    @ApiImplicitParam(name = "id", value = "놀이구역ID", required = true,dataType = "string", paramType = "query")
+	  })
 	@ResponseBody
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
 	public ResponseEntity<Object> select(@ModelAttribute ZoneVo zoneVo) {

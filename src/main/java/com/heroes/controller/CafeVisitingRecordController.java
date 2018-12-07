@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.heroes.dto.JSONResult;
 import com.heroes.service.CafeVisitingRecordService;
 import com.heroes.vo.CafeVisitingRecordVo;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 
 @CrossOrigin(origins="*")
 @Controller
@@ -34,7 +36,7 @@ public class CafeVisitingRecordController {
       return ResponseEntity.ok(JSONResult.success(cafeVisitingRecordVo, "fail"));
     }
   }
-  
+  @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/select", method = RequestMethod.GET)
   public ResponseEntity<Object> select(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) {

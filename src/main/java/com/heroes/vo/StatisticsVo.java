@@ -8,10 +8,11 @@ public class StatisticsVo {
   private int averageCo2;
   private int averageTemperature;
   private int averageDust;
-
+  
   private int age;
 
   private String name;
+  private String childId;
   private String id;
   private String zoneId;
   private String zoneName;
@@ -26,6 +27,14 @@ public class StatisticsVo {
   private String Date;
   
   
+  public String getChildId() {
+    return childId;
+  }
+
+  public void setChildId(String childId) {
+    this.childId = childId;
+  }
+
   public String getDate() {
     return Date;
   }
