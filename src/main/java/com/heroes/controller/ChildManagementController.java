@@ -24,6 +24,8 @@ public class ChildManagementController {
   @Autowired
   private ChildService childService;
 
+  
+  
   @ResponseBody
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody List<ChildVo> childVoList) {

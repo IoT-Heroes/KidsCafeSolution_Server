@@ -49,141 +49,202 @@
 		  	]]>
 		</if>
 	</select>
-	
-		<select id="selectChildActivityHourList" resultType="statisticsvo">
+
+	<select id="selectChildActivityHourList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
+		CHILD_ID CHILDID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_HOUR_STATISTICS
+		AVERAGE,
+		MAXIMUM,
+		MINIMUM
+		FROM CHILD_ACTIVITY_HOUR_STATISTICS
 		WHERE 1=1
 
-		<if test="zoneId != ''">
+		<if test="startDate != ''">
 		  <![CDATA[
-	 	AND ZONE_ID = #{zoneId}
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="childId != ''">
+		  <![CDATA[
+	 	AND CHILD_ID = #{childId}
 		  	]]>
 		</if>
 	</select>
 
 	<select id="selectChildActivityDayList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
+		CHILD_ID CHILDID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_DAY_STATISTICS
+		AVERAGE,
+		MAXIMUM,
+		MINIMUM
+		FROM CHILD_ACTIVITY_DAY_STATISTICS
 		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="childId != ''">
+		  <![CDATA[
+	 	AND CHILD_ID = #{childId}
+		  	]]>
+		</if>
 	</select>
-	
-		<select id="selectChildPulseMinuteList" resultType="statisticsvo">
+
+	<select id="selectChildPulseMinuteList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
+		CHILD_ID CHILDID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_HOUR_STATISTICS
+		AVERAGE,
+		MAXIMUM,
+		MINIMUM
+		FROM CHILD_PULSE_MINUTE_STATISTICS
 		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="childId != ''">
+		  <![CDATA[
+	 	AND CHILD_ID = #{childId}
+		  	]]>
+		</if>
 	</select>
 
 	<select id="selectChildPulseDayList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
+		CHILD_ID CHILDID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_DAY_STATISTICS
+		AVERAGE,
+		MAXIMUM,
+		MINIMUM
+		FROM CHILD_PULSE_HOUR_STATISTICS
 		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="childId != ''">
+		  <![CDATA[
+	 	AND CHILD_ID = #{childId}
+		  	]]>
+		</if>
 	</select>
-	
-		<select id="selectIncomeHourList" resultType="statisticsvo">
+
+	<select id="selectIncomeHourList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_HOUR_STATISTICS
+		AVERAGE,
+		MAXIMUM,
+		MINIMUM
+		FROM CAFE_INCOME_HOUR_STATISTICS
 		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
 	</select>
 
 	<select id="selectIncomeDayList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_DAY_STATISTICS
+		AVERAGE,
+		MAXIMUM,
+		MINIMUM
+		FROM CAFE_INCOME_DAY_STATISTICS
 		WHERE 1=1
-	</select>
-	
-		<select id="selectUsingFrequencyHourList" resultType="statisticsvo">
-		SELECT
-		ZONE_ID,
-		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_HOUR_STATISTICS
-		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
 	</select>
 
-	<select id="selectUsingFrequencyList" resultType="statisticsvo">
+	<select id="selectUsingFrequencyHourList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_DAY_STATISTICS
+		AGE,
+		AVERAGE,
+		MAXIMUM,
+		MINIMUM
+		FROM CAFE_USAGE_HOUR_STATISTICS
 		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="age != ''">
+		  <![CDATA[
+	  AND AGE = #{age}	
+		  	]]>
+		</if>
 	</select>
-	
-		<select id="selectZoneFrequencyHourList" resultType="statisticsvo">
+
+	<select id="selectUsingFrequencyDayList" resultType="statisticsvo">
+		SELECT
+		DATE,
+		AGE,
+		AVERAGE,
+		MAXIMUM,
+		MINIMUM
+		FROM CAFE_USAGE_DAY_STATISTICS
+		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="age != ''">
+		  <![CDATA[
+	  AND AGE = #{age}	
+		  	]]>
+		</if>
+	</select>
+
+	<select id="selectZoneFrequencyHourList" resultType="statisticsvo">
 		SELECT
 		ZONE_ID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_HOUR_STATISTICS
+		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME
+		FROM CHILD_ZONE_VISITING_HOUR_STATISTICS
 		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="zoneId != ''">
+		  <![CDATA[
+	  AND ZONE_ID = #{zoneId}	
+		  	]]>
+		</if>
+
 	</select>
 
 	<select id="selectZoneFrequencyDayList" resultType="statisticsvo">
 		SELECT
 		ZONE_ID,
 		DATE,
-		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
-		AVERAGE_CO2 AVERAGECO2,
-		AVERAGE_TEMPERATURE AVERAGETEMPERATURE,
-		AVERAGE_HUMIDITY AVERAGEHUMIDITY,
-		AVERAGE_DUST AVERAGEDUST
-		FROM ZONE_AIR_DAY_STATISTICS
+		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME
+		FROM CHILD_ZONE_VISITING_DAY_STATISTICS
 		WHERE 1=1
+		<if test="startDate != ''">
+		  <![CDATA[
+	  AND DATE BETWEEN #{startDate}::timestamp  AND #{endDate}::timestamp		
+		  	]]>
+		</if>
+		<if test="zoneId != ''">
+		  <![CDATA[
+	  AND ZONE_ID = #{zoneId}	
+		  	]]>
+		</if>
+
 	</select>
 
 </mapper>

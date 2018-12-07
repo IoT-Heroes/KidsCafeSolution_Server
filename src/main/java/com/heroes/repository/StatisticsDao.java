@@ -52,8 +52,8 @@ public class StatisticsDao {
     return sqlSession.selectList("statistics.selectUsingFrequencyHourList", statisticsVo);
   }
 
-  public List<StatisticsVo> selectUsingFrequencyList(StatisticsVo statisticsVo) {
-    return sqlSession.selectList("statistics.selectUsingFrequencyList", statisticsVo);
+  public List<StatisticsVo> selectUsingFrequencyDayList(StatisticsVo statisticsVo) {
+    return sqlSession.selectList("statistics.selectUsingFrequencyDayList", statisticsVo);
   }
 
 

@@ -6,9 +6,9 @@
 	<insert id="insertChild">
 		<![CDATA[
 			INSERT INTO K_CHILD 
-				(ID,USER_ID,NAME,TARGET_ACTIVITY_FIGURE,AGE,HEIGHT,WEIGHT,SEX) 
+				(ID,USER_ID,NAME,TARGET_ACTIVITY_FIGURE,BIRTH,HEIGHT,WEIGHT,SEX) 
 			VALUES 
-				(#{id},	#{userId}, #{name}, #{targetActivityFigure}, #{age}, #{height}, #{weight}, #{sex}) 
+				(#{id},	#{userId}, #{name}, #{targetActivityFigure}, #{birth}, #{height}, #{weight}, #{sex}) 
 		]]>
 	</insert>
 
@@ -18,7 +18,8 @@
 		USER_ID USERID,
 		NAME,
 		TARGET_ACTIVITY_FIGURE TARGETACTIVITYFIGURE,
-		AGE,
+		extract(YEAR FROM age(BIRTH::date)) as AGE,
+		BIRTH,
 		HEIGHT,
 		WEIGHT,
 		SEX,

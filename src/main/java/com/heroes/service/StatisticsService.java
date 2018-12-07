@@ -65,7 +65,7 @@ public class StatisticsService {
     if (statisticsVo.getBatchType().equals("H")) {
       return statisticsDao.selectUsingFrequencyHourList(statisticsVo);
     } else if (statisticsVo.getBatchType().equals("D")) {
-      return statisticsDao.selectUsingFrequencyList(statisticsVo);
+      return statisticsDao.selectUsingFrequencyDayList(statisticsVo);
 
     } else {
       return null;

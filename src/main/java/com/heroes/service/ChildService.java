@@ -1,6 +1,7 @@
 package com.heroes.service;
 
 import java.util.List;
+import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.heroes.repository.ChildDao;
@@ -14,6 +15,8 @@ public class ChildService {
   private ChildDao childDao;
 
   public int insert(ChildVo childVo) {
+    UUID uuid = UUID.randomUUID();
+    childVo.setId(uuid.toString());
     return childDao.insert(childVo);
   }
   
@@ -21,6 +24,8 @@ public class ChildService {
     int insertCounter = 0; 
     
     for(ChildVo paramChildVo:childVoList) {
+      UUID uuid = UUID.randomUUID();
+      paramChildVo.setId(uuid.toString());
       insertCounter += childDao.insert(paramChildVo);
     }
       

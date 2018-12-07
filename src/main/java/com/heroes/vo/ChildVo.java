@@ -10,17 +10,29 @@ public class ChildVo {
   private String name;
   private String isBandWearing;
   private String sex;
+  private String birth;
 
   private int targetActivityFigure;
   private int age;
+
   private int height;
   private int weight;
-  
-  
+
+
   private List<FoodVo> eatableFoodList;
   private CafeVisitingRecordVo currentCafeVisitingRecord;
   private List<CafeVisitingRecordVo> cafeVisitingRecord;
-  
+
+
+
+  public String getBirth() {
+    return birth;
+  }
+
+  public void setBirth(String birth) {
+    this.birth = birth;
+  }
+
   public List<FoodVo> getEatableFoodList() {
     return eatableFoodList;
   }
