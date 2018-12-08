@@ -8,7 +8,7 @@ public class ChildVo {
   private String parentId;
   private String userId;
   private String name;
-  private String isBandWearing;
+  private boolean isBandWearing;
   private String sex;
   private String birth;
 
@@ -24,6 +24,14 @@ public class ChildVo {
   private List<CafeVisitingRecordVo> cafeVisitingRecord;
 
 
+
+  public boolean getIsBandWearing() {
+    return isBandWearing;
+  }
+
+  public void setIsBandWearing(boolean isBandWearing) {
+    this.isBandWearing = isBandWearing;
+  }
 
   public String getBirth() {
     return birth;
@@ -89,13 +97,6 @@ public class ChildVo {
     this.name = name;
   }
 
-  public String getIsBandWearing() {
-    return isBandWearing;
-  }
-
-  public void setIsBandWearing(String isBandWearing) {
-    this.isBandWearing = isBandWearing;
-  }
 
   public String getSex() {
     return sex;

@@ -5,6 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java/com.hero.exception"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/com.heroes"/>
         <property name="context-root" value="heroes"/>
         <property name="java-output-path" value="/heroes/build/classes"/>
     </wb-module>

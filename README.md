@@ -40,5 +40,37 @@ insert into departments values( 3 , 'test3' );
 	https://offbyone.tistory.com/256
 	
 	
-#### test
+#### How To connect with IoTMakerrs
+크롬 개발자도구에서 
+```
+var token;
+
+var requestTokenAwareApi = function(callback, args){
+	var appId = "2ioIkGX1fc40P8bO";
+	var secret = "4hqRhMDAoPKErOGP";
+
+	$.ajax('https://iotmakers.kt.com/oauth/token', {
+		method: 'POST',
+		xhrFields: { withCredentials: true },
+		headers: { 'Authorization': 'Basic ' + btoa(appId + ':' + secret)},
+		data: { grant_type: 'password',
+			username: 'tkdgjs1501',
+			password: '***'
+		},
+		success: function(result) {
+			token = result.access_token
+			console.log(result);
+		},
+		error: function(xhr,status,error){
+			console.log(xhr);
+		}
+	});
+};
+```
+위 코드 입력 후 requestTokenAwareApi () 입력하여 토큰값 얻어내자
+
+그 후 헤더에 headers: { 'Authorization': 'Bearer ' + token.access_token}, 세팅하고 날리면 된다.
+
+
+
 	

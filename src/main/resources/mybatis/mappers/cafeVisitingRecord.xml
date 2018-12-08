@@ -28,5 +28,6 @@
 	  		AND CHILD_ID = #{childId}
 		  	]]>
 		</if>
+		ORDER BY STARTDATE DESC
 	</select>
 </mapper>
