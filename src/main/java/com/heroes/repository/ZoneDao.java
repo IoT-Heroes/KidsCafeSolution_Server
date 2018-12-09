@@ -18,8 +18,8 @@ public class ZoneDao {
 		return sqlSession.selectOne("zone.selectOne", zoneVo);
 	}
 
-	public List<ZoneVo> selectList() {
-		return sqlSession.selectList("zone.selectList");
+	public List<ZoneVo> selectList(ZoneVo zoneVo) {
+		return sqlSession.selectList("zone.selectList",zoneVo);
 	}
 
 }

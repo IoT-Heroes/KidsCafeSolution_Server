@@ -17,6 +17,7 @@
 	<select id="selectList" resultType="zonevo">
 		SELECT ID,NAME,MAX_CAPACITY MAXCAPACITY,CURRENT_USING_COUNT CURRENTUSINGCOUNT,LIMIT_AGE LIMITAGE,CODE_ID CODEID
 		FROM ZONE
+		WHERE 1 = 1
 		<if test="id != '' and id != null ">
 		  <![CDATA[	
 	  		AND   id = #{id}

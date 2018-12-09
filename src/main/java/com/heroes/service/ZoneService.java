@@ -30,14 +30,14 @@ public class ZoneService {
 
   }
 
-  public List<ZoneVo> selectList() {
+  public List<ZoneVo> selectList(ZoneVo zoneVo) {
 
-    List<ZoneVo> zoneVoList = zoneDao.selectList();
+    List<ZoneVo> zoneVoList = zoneDao.selectList(zoneVo);
 
-    for (ZoneVo zoneVo : zoneVoList) {
+    for (ZoneVo resZoneVo : zoneVoList) {
       ZoneCoordinateVo zoneCoordinateVo = new ZoneCoordinateVo();
-      zoneCoordinateVo.setZoneId(zoneVo.getId());
-      zoneVo.setCoordinates((ArrayList<ZoneCoordinateVo>) zoneCoordinateDao.selectListByZoneId(zoneCoordinateVo));
+      zoneCoordinateVo.setZoneId(resZoneVo.getId());
+      resZoneVo.setCoordinates((ArrayList<ZoneCoordinateVo>) zoneCoordinateDao.selectListByZoneId(zoneCoordinateVo));
     }
 
     return zoneVoList;
