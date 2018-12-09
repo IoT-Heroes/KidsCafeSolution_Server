@@ -1,8 +1,5 @@
 package com.heroes.controller;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-import org.apache.http.client.ClientProtocolException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.heroes.dto.JSONResult;
 import com.heroes.service.DataService;
 import com.heroes.service.IoTMakersService;

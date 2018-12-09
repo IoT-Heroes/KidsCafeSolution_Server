@@ -34,6 +34,9 @@ insert into departments values( 2 , 'test2' );
 
 insert into departments values( 3 , 'test3' );
 
+##### 서버 재시작
+SQL Shell 을 켜서 show data_directory; 을 입력하여 경로 복사
+CMD 켜고 pg_ctl -D "D:\PSG_SQL\data" restart 입력
 
 ##### Spring Quartz
 ###### version : 2.3.0
