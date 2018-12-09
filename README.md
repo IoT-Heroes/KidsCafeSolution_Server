@@ -73,4 +73,8 @@ var requestTokenAwareApi = function(callback, args){
 
 
 
+#### Project import error
+LifecycleException 에러가 뜰 땐 메이븐 저장소를 초기화 하자
+window- properties - maven -user settings - local repository 경로에 들어가서 내부 파일을 지우기 -  프로젝트 우클릭 후  메이븐 업데이트
+
 	
