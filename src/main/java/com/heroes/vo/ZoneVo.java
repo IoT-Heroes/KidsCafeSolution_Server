@@ -10,11 +10,20 @@ public class ZoneVo {
   private String currentUsingCount;
   private String limitAge;
   private String codeId;
+  private String deviceId;
 
   private ArrayList<ZoneCoordinateVo> coordinates;
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public String getDeviceId() {
+    return deviceId;
+  }
+
+  public void setDeviceId(String deviceId) {
+    this.deviceId = deviceId;
   }
 
   public String getId() {

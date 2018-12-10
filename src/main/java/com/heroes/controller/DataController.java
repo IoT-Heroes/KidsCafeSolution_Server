@@ -26,7 +26,9 @@ public class DataController {
   @RequestMapping(value = "/food/select", method = RequestMethod.GET)
   public ResponseEntity<Object> select() {
 
-    ioTMakersService.test();
+    //test
+    ioTMakersService.executeAirHourBatch();
+    
     return ResponseEntity.ok(JSONResult.success(dataService.selectFoodList()));
 
   }

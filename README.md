@@ -49,8 +49,8 @@ CMD 켜고 pg_ctl -D "D:\PSG_SQL\data" restart 입력
 var token;
 
 var requestTokenAwareApi = function(callback, args){
-	var appId = "2ioIkGX1fc40P8bO";
-	var secret = "4hqRhMDAoPKErOGP";
+	var appId = "YOkVU8rBEXliilVZ";
+	var secret = "dubgBOpbtsPGnYc7";
 
 	$.ajax('https://iotmakers.kt.com/oauth/token', {
 		method: 'POST',

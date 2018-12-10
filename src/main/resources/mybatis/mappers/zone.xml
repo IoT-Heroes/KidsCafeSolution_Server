@@ -25,4 +25,18 @@
 		</if>
 	</select>
 
+
+	<select id="selectZoneDevice" resultType="zonevo">
+		SELECT 
+		ID DEVICEID,
+		ZONE_ID ID
+		FROM ZONE_DEVICE
+		WHERE 1 = 1
+		<if test="deviceId != '' and deviceId != null ">
+		  <![CDATA[	
+	  		AND   id = #{deviceId}
+		  	]]>
+		</if>
+	</select>
+
 </mapper>

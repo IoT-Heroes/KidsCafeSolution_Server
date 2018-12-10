@@ -1,0 +1,12 @@
+package api;
+
+public class STATUS_CODE {
+  public static final int SUCCESS = 200;
+  public static final int PARSING_ERROR = 1000;
+
+
+  public static final int SET_STATISTICS_DATA_ERROR = 2001;
+  public static final int BATCH_ERROR = 2002;
+  public static final int UNKNOWN_DEVICE_ID = 2003;
+
+}

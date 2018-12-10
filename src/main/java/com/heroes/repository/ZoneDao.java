@@ -22,4 +22,8 @@ public class ZoneDao {
 		return sqlSession.selectList("zone.selectList",zoneVo);
 	}
 
+	
+	public List<ZoneVo> selectZoneDevice(ZoneVo zoneVo){
+	  return sqlSession.selectList("zone.selectZoneDevice",zoneVo);
+	}
 }

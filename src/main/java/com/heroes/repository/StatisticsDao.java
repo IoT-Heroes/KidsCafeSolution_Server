@@ -15,6 +15,10 @@ public class StatisticsDao {
   public List<StatisticsVo> selectAirStateHourList(StatisticsVo statisticsVo) {
     return sqlSession.selectList("statistics.selectAirStateHourList", statisticsVo);
   }
+  
+  public int insertAirStateHour(StatisticsVo statisticsVo) {
+    return sqlSession.insert("statistics.insertAirStateHour", statisticsVo);
+  }
 
   public List<StatisticsVo> selectAirStateDayList(StatisticsVo statisticsVo) {
     return sqlSession.selectList("statistics.selectAirStateDayList", statisticsVo);

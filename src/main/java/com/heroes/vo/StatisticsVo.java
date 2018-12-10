@@ -8,7 +8,18 @@ public class StatisticsVo {
   private int averageCo2;
   private int averageTemperature;
   private int averageDust;
+  private int averageHumidity;
   
+  
+  
+  public int getAverageHumidity() {
+    return averageHumidity;
+  }
+
+  public void setAverageHumidity(int averageHumidity) {
+    this.averageHumidity = averageHumidity;
+  }
+
   private int age;
 
   private String name;

@@ -27,6 +27,16 @@
 		</if>
 	</select>
 
+	<insert id="insertAirStateHour">
+		<![CDATA[
+			INSERT INTO ZONE_AIR_HOUR_STATISTICS 
+				(ZONE_ID,DATE,AVERAGE_CO2,AVERAGE_TEMPERATURE,AVERAGE_HUMIDITY,AVERAGE_DUST) 
+			VALUES 
+				((SELECT ZONE_ID FROM ZONE_DEVICE WHERE ID=#{id}),	#{date}::timestamp	,0,#{averageTemperature},#{averageHumidity},0) 
+		]]>
+	</insert>
+
+
 	<select id="selectAirStateDayList" resultType="statisticsvo">
 		SELECT
 		ZONE_ID,
