@@ -6,8 +6,8 @@ public class CafeVisitingRecordVo {
 
   private String childId;
   private String childName;
-  private Date startDate;
-  private Date endDate;
+  private String startDate;
+  private String endDate;
   private String bandDeviceId;
   private int amountPrice;
   private int amountRest;
@@ -29,21 +29,21 @@ public class CafeVisitingRecordVo {
     this.childId = childId;
   }
 
- 
 
-  public Date getStartDate() {
+
+  public String getStartDate() {
     return startDate;
   }
 
-  public void setStartDate(Date startDate) {
+  public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
-  public Date getEndDate() {
+  public String getEndDate() {
     return endDate;
   }
 
-  public void setEndDate(Date endDate) {
+  public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 
