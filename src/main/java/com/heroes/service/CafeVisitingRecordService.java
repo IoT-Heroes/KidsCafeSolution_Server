@@ -25,6 +25,7 @@ public class CafeVisitingRecordService extends JobBuilder {
 
   public int insert(CafeVisitingRecordVo cafeVisitingRecordVo) {
 
+
     UUID uuid = UUID.randomUUID();
 
     Date now = new Date();
@@ -34,24 +35,25 @@ public class CafeVisitingRecordService extends JobBuilder {
     cal.add(Calendar.HOUR, +COMMONDATA.DEFAULT_USING_TIME);
     expire = cal.getTime();
 
-    Timestamp fromTimestamp = new Timestamp(expire.getTime());
-    Timestamp toTimestamp = new Timestamp(now.getTime());
-    
-    
-    
-    
+    Timestamp fromTimestamp = new Timestamp(now.getTime());
+    Timestamp toTimestamp = new Timestamp(expire.getTime());
+
+
+
+    cafeVisitingRecordVo.setStartDate(fromTimestamp.toString());
     cafeVisitingRecordVo.setEndDate(toTimestamp.toString());
     cafeVisitingRecordVo.setUsingTime(2);
 
-
-    String expression = "0/10 * * * * ?";
-    Object[] param= new Object[1];
+    int month = (int) cal.get(cal.MONTH) + 1;
+    String expression = "0 " + cal.get(cal.MINUTE) + " " + cal.get(cal.HOUR_OF_DAY) + " " + cal.get(cal.DATE) + " " + month + " ? " + cal.get(cal.YEAR);
+    Object[] param = new Object[1];
     param[0] = cafeVisitingRecordVo;
-    
 
+    cafeVisitingRecordDao.insert(cafeVisitingRecordVo);
+    cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo);
 
-        batchService.registBatch(uuid.toString(), expression, this, "update", param);
-    return cafeVisitingRecordDao.insert(cafeVisitingRecordVo);
+    batchService.registBatch(uuid.toString(), expression, this, "update", param);
+    return 0;
   }
 
   public List<CafeVisitingRecordVo> selectList(CafeVisitingRecordVo cafeVisitingRecordVo) {
@@ -59,12 +61,8 @@ public class CafeVisitingRecordService extends JobBuilder {
   }
 
   public int update(CafeVisitingRecordVo cafeVisitingRecordVo) {
-    System.out.println("uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu");
     cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo);
     return cafeVisitingRecordDao.updateCafeVisitingRecord(cafeVisitingRecordVo);
   }
 
-  public void test() {
-    System.out.println("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-  }
 }

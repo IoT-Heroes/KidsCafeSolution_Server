@@ -12,7 +12,7 @@ CREATE TABLE CAFE_VISITING_RECORD
 	CHILD_ID       varchar(50) NOT NULL, -- 자녀ID
 	START_DATE     timestamp   NOT NULL, -- 입장시간
 	BAND_DEVICE_ID varchar(50) NULL,     -- 밴드디바이스ID
-	END_DATE       date        NULL,     -- 퇴장시간
+	END_DATE       timestamp   NULL,     -- 퇴장시간
 	AMOUNT_PRICE   integer     NULL,     -- 청구금액
 	USING_TIME     integer     NULL      -- 이용시간
 );

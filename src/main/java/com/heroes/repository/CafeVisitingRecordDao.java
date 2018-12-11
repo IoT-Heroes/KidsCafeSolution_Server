@@ -26,6 +26,6 @@ public class CafeVisitingRecordDao {
   }
   
   public int updateBandDevice(CafeVisitingRecordVo cafeVisitingRecordVo) {
-    return sqlSession.update("cafeVisitingRecord.updateBandDevice", cafeVisitingRecordVo);
+    return sqlSession.update("cafeVisitingRecord.updateBandDevice", cafeVisitingRecordVo);    
   }
 }

@@ -1,7 +1,5 @@
 package com.heroes.vo;
 
-import java.sql.Date;
-
 public class CafeVisitingRecordVo {
 
   private String childId;

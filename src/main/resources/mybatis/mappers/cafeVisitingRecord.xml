@@ -6,21 +6,21 @@
 	<insert id="insertCafeVisitingRecord">
 		<![CDATA[
 			INSERT INTO CAFE_VISITING_RECORD 
-				(CHILD_ID,START_TIME,BAND_DEVICE_ID,END_TIME,AMOUNT_PRICE,USING_TIME) 
+				(CHILD_ID,START_DATE,BAND_DEVICE_ID,END_DATE,AMOUNT_PRICE,USING_TIME) 
 			VALUES 
-				(#{childId},#{startTime}::timestamp,#{bandDeviceId},#{endTime}::timestamp,SELECT PRICE FROM PRICE WHERE USING_TIME = #{usingTime} ,#{usingTime}) 
+				(#{childId},#{startDate}::timestamp,#{bandDeviceId},#{endDate}::timestamp,(SELECT PRICE FROM PRICE WHERE USING_TIME = #{usingTime} ),#{usingTime}) 
 		]]>
 	</insert>
 
 	<select id="selectList" resultType="cafevisitingrecordvo">
-		SELECT 
-			(SELECT NAME FROM K_CHILD WHERE ID = CHILD_ID) AS CHILDNAME,
-			#{childId} CHILDID,
-			START_DATE STARTDATE,
-			BAND_DEVICE_ID BANDDEVICEID,
-			END_DATE ENDDATE,
-			AMOUNT_PRICE AMOUNTPRICE,
-			USING_TIME USINGTIME
+		SELECT
+		(SELECT NAME FROM K_CHILD WHERE ID = CHILD_ID) AS CHILDNAME,
+		#{childId} CHILDID,
+		START_DATE STARTDATE,
+		BAND_DEVICE_ID BANDDEVICEID,
+		END_DATE ENDDATE,
+		AMOUNT_PRICE AMOUNTPRICE,
+		USING_TIME USINGTIME
 		FROM CAFE_VISITING_RECORD
 		WHERE 1 = 1
 		<if test="childId != ''">
@@ -30,23 +30,28 @@
 		</if>
 		ORDER BY STARTDATE DESC
 	</select>
-	
+
 	<update id="updateCafeVisitingRecord" parameterType="cafevisitingrecordvo">
-		<![CDATA[
-			UPDATE BAND_DEVICE
-			SET IS_RENT = FALSE
-			WHERE ID = #{bandDeviceId }
-		
-		]]>
-	</update>
-		<update id="updateBandDevice" parameterType="cafevisitingrecordvo">
 		<![CDATA[
 			UPDATE CAFE_VISITING_RECORD
 			SET BAND_DEVICE_ID = NULL
 			WHERE CHILD_ID = #{childId }
-			AND START_DATE = #{startDate}
+			AND START_DATE = #{startDate}::timestamp
+			
+		
+		]]>
+	</update>
+	<update id="updateBandDevice" parameterType="cafevisitingrecordvo">
+		<![CDATA[
+		
+		
+			UPDATE BAND_DEVICE
+			SET IS_RENT = NOT IS_RENT
+			WHERE ID = #{bandDeviceId }
 			
 		]]>
 	</update>
-	
+
+
+
 </mapper>
