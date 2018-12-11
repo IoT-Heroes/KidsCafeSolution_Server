@@ -1,5 +1,8 @@
 package com.heroes.service;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -9,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.heroes.repository.CafeVisitingRecordDao;
 import com.heroes.vo.CafeVisitingRecordVo;
+import api.COMMONDATA;
 
 @Service("CafeVisitingRecordService")
 public class CafeVisitingRecordService extends JobBuilder {
@@ -23,11 +27,20 @@ public class CafeVisitingRecordService extends JobBuilder {
 
     UUID uuid = UUID.randomUUID();
 
-    Date startTime = new Date(cafeVisitingRecordVo.getStartDate());
+    Date now = new Date();
+    Date expire;
     Calendar cal = Calendar.getInstance();
-    cal.setTime(startTime);
-    cal.add(Calendar.HOUR, +2);
-    cafeVisitingRecordVo.setEndDate(cal.getTime().toString());
+    cal.setTime(now);
+    cal.add(Calendar.HOUR, +COMMONDATA.DEFAULT_USING_TIME);
+    expire = cal.getTime();
+
+    Timestamp fromTimestamp = new Timestamp(expire.getTime());
+    Timestamp toTimestamp = new Timestamp(now.getTime());
+    
+    
+    
+    
+    cafeVisitingRecordVo.setEndDate(toTimestamp.toString());
     cafeVisitingRecordVo.setUsingTime(2);
 
 

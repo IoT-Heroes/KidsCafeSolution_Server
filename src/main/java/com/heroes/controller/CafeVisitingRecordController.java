@@ -25,6 +25,13 @@ public class CafeVisitingRecordController {
   @Autowired
   private CafeVisitingRecordService cafeVisitingRecordService;
 
+  
+  
+  /**
+   * band id, child id만 설정해서 보내줄것
+   * @param cafeVisitingRecordVo
+   * @return
+   */
   @ResponseBody
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody CafeVisitingRecordVo cafeVisitingRecordVo) {

@@ -257,7 +257,9 @@
 	  AND CHILD_ID = #{childId}	
 		  	]]>
 		</if>
-
+		
+		ORDER BY ZONEID ASC
+		
 	</select>
 
 
@@ -305,7 +307,7 @@
 
 	<select id="selectZonefrequencybyageHourList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
+		ZONE_ID ZONEID,
 		DATE,
 		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
 		AGE,
@@ -327,11 +329,12 @@
 	  AND AGE = (SELECT extract(YEAR FROM age(BIRTH::date)) as AGE FROM K_CHILD WHERE ID = #{childId})
 		  	]]>
 		</if>
+		ORDER BY ZONEID
 	</select>
 
 	<select id="selectZonefrequencybyageDayList" resultType="statisticsvo">
 		SELECT
-		ZONE_ID,
+		ZONE_ID ZONEID,
 		DATE,
 		(SELECT NAME FROM ZONE WHERE ID=ZONE_ID) AS ZONENAME,
 		AGE,
@@ -353,6 +356,7 @@
 	  AND AGE = (SELECT extract(YEAR FROM age(BIRTH::date)) as AGE FROM K_CHILD WHERE ID = #{childId})
 		  	]]>
 		</if>
+		ORDER BY ZONEID
 	</select>
 
 </mapper>

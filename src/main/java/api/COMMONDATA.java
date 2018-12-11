@@ -15,4 +15,6 @@ public class COMMONDATA {
   
   public static final String ZONE_DEVICE_NAMING_RULE = "zone";
   public static final String BAND_DEVICE_NAMING_RULE = "band";
+  
+  public static final int DEFAULT_USING_TIME = 2;
 }

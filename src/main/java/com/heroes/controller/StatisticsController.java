@@ -76,6 +76,9 @@ public class StatisticsController {
     return ResponseEntity.ok(JSONResult.success(results));
   }
 
+  
+  
+  // 특정자녀가 존방문횟수(visiting record 기반)
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), 
 })
   @ResponseBody
