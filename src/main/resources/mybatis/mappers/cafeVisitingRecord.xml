@@ -8,7 +8,7 @@
 			INSERT INTO CAFE_VISITING_RECORD 
 				(CHILD_ID,START_TIME,BAND_DEVICE_ID,END_TIME,AMOUNT_PRICE,USING_TIME) 
 			VALUES 
-				(#{childId},#{startTime},#{bandDeviceId},#{endTime},#{amountPrice},#{usingTime}) 
+				(#{childId},#{startTime}::timestamp,#{bandDeviceId},#{endTime}::timestamp,SELECT PRICE FROM PRICE WHERE USING_TIME = #{usingTime} ,#{usingTime}) 
 		]]>
 	</insert>
 

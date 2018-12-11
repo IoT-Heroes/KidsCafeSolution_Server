@@ -19,10 +19,10 @@ public class BatchService {
 
   /**
    * @param jobName
-   * @param expression  배치 스케줄링 표현식
+   * @param expression 배치 스케줄링 표현식
    * @return
    */
-  public int registBatch(String jobName,String expression,Object object,String methodName) {
+  public int registBatch(String jobName, String expression, Object targetInst, String targetMethond, Object[] arguments) {
 
 
     // get the quartzFactory bean
@@ -33,8 +33,9 @@ public class BatchService {
     try {
       // create JOB
       MethodInvokingJobDetailFactoryBean jobDetail = new MethodInvokingJobDetailFactoryBean();
-      jobDetail.setTargetObject(object);
-      jobDetail.setTargetMethod(methodName);
+      jobDetail.setTargetObject(targetInst);
+      jobDetail.setTargetMethod(targetMethond);
+      jobDetail.setArguments(arguments);
       jobDetail.setName(jobName);
       jobDetail.setConcurrent(false);
       jobDetail.afterPropertiesSet();
@@ -47,7 +48,7 @@ public class BatchService {
       cronTrigger.setCronExpression(expression);
       cronTrigger.afterPropertiesSet();
 
-      scheduler.scheduleJob(jobDetail.getObject(), cronTrigger.getObject()); 
+      scheduler.scheduleJob(jobDetail.getObject(), cronTrigger.getObject());
 
     } catch (Exception e) {
       e.printStackTrace();

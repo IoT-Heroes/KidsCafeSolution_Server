@@ -89,4 +89,17 @@ public class StatisticsService {
     }
   }
   
+  public List<StatisticsVo> selectZonefrequencybyage(StatisticsVo statisticsVo) {
+
+    if (statisticsVo.getBatchType().equals("H")) {
+      return statisticsDao.selectZonefrequencybyageHourList(statisticsVo);
+    } else if (statisticsVo.getBatchType().equals("D")) {
+      return statisticsDao.selectZonefrequencybyageDayList(statisticsVo);
+
+    } else {
+      return null;
+    }
+  }
+  
+  
 }
