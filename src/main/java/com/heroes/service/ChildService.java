@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.heroes.repository.ChildDao;
 import com.heroes.vo.ChildVo;
 import com.heroes.vo.FoodVo;
+import api.STATUS_CODE;
 
 @Service
 public class ChildService {
@@ -32,7 +33,7 @@ public class ChildService {
     if(insertCounter != childVoList.size()) {
       // insert error occured
       // rollback!
-      
+      return STATUS_CODE.INPUT_ERROR;
     }
     return insertCounter;
   }

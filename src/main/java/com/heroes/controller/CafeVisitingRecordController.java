@@ -17,7 +17,7 @@ import com.heroes.vo.CafeVisitingRecordVo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 @Controller
 @RequestMapping("/visitingrecord/management")
 public class CafeVisitingRecordController {
@@ -34,9 +34,10 @@ public class CafeVisitingRecordController {
       return ResponseEntity.ok(JSONResult.success(cafeVisitingRecordVo, "success"));
 
     } else {
-      return ResponseEntity.ok(JSONResult.success(cafeVisitingRecordVo, "fail"));
+      return ResponseEntity.ok(JSONResult.fail(cafeVisitingRecordVo, "fail"));
     }
   }
+
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/select", method = RequestMethod.GET)
@@ -50,5 +51,20 @@ public class CafeVisitingRecordController {
 
     }
   }
+
+  @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query")})
+  @ResponseBody
+  @RequestMapping(value = "/update", method = RequestMethod.PUT)
+  public ResponseEntity<Object> put(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) {
+
+    if (cafeVisitingRecordVo.getChildId() != null) {
+      cafeVisitingRecordService.selectList(cafeVisitingRecordVo);
+      return ResponseEntity.ok(JSONResult.success(cafeVisitingRecordVo));
+    } else {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(cafeVisitingRecordVo);
+
+    }
+  }
+
 
 }

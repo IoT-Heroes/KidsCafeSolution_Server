@@ -21,4 +21,11 @@ public class CafeVisitingRecordDao {
     return sqlSession.selectList("cafeVisitingRecord.selectList", cafeVisitingRecordVo);
   }
   
+  public int updateCafeVisitingRecord(CafeVisitingRecordVo cafeVisitingRecordVo) {
+    return sqlSession.update("cafeVisitingRecord.updateCafeVisitingRecord", cafeVisitingRecordVo);
+  }
+  
+  public int updateBandDevice(CafeVisitingRecordVo cafeVisitingRecordVo) {
+    return sqlSession.update("cafeVisitingRecord.updateBandDevice", cafeVisitingRecordVo);
+  }
 }

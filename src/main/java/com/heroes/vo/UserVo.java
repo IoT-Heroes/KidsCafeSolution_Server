@@ -7,7 +7,7 @@ public class UserVo {
 	private String name;
 	private String password;
 	private String phoneNumber;
-	private String isAuthor;
+	private boolean isAuthor;
 	private String token;
 
 	private ArrayList<ChildVo> child;
@@ -45,15 +45,15 @@ public class UserVo {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getIsAuthor() {
-		return isAuthor;
-	}
+	public boolean getIsAuthor() {
+    return isAuthor;
+  }
 
-	public void setIsAuthor(String isAuthor) {
-		this.isAuthor = isAuthor;
-	}
+  public void setIsAuthor(boolean isAuthor) {
+    this.isAuthor = isAuthor;
+  }
 
-	public String getToken() {
+  public String getToken() {
 		return token;
 	}
 

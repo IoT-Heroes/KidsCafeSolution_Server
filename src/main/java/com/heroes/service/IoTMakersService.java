@@ -52,6 +52,11 @@ public class IoTMakersService {
   }
 
 
+  public int pulseAndActivityBatch() {
+
+    return STATUS_CODE.SUCCESS;
+  }
+
 
   private int executeBatch(String deviceId, String batchType) {
 

@@ -1,9 +1,9 @@
 package com.heroes.dto;
 
 public class JSONResult {
-  private String result; 
-  private String message; 
-  private Object data; 
+  private String result;
+  private String message;
+  private Object data;
 
   private JSONResult(String result, String message, Object data) {
     this.result = result;
@@ -17,6 +17,10 @@ public class JSONResult {
 
   public static JSONResult success(Object data, String message) {
     return new JSONResult("success", message, data);
+  }
+
+  public static JSONResult fail(Object data, String message) {
+    return new JSONResult("fail", message, data);
   }
 
   public static JSONResult fail(String message) {

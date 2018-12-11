@@ -30,4 +30,23 @@
 		</if>
 		ORDER BY STARTDATE DESC
 	</select>
+	
+	<update id="updateCafeVisitingRecord" parameterType="cafevisitingrecordvo">
+		<![CDATA[
+			UPDATE BAND_DEVICE
+			SET IS_RENT = FALSE
+			WHERE ID = #{bandDeviceId }
+		
+		]]>
+	</update>
+		<update id="updateBandDevice" parameterType="cafevisitingrecordvo">
+		<![CDATA[
+			UPDATE CAFE_VISITING_RECORD
+			SET BAND_DEVICE_ID = NULL
+			WHERE CHILD_ID = #{childId }
+			AND START_DATE = #{startDate}
+			
+		]]>
+	</update>
+	
 </mapper>

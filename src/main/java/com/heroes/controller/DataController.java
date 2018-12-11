@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.heroes.dto.JSONResult;
+import com.heroes.service.BatchService;
+import com.heroes.service.CafeVisitingRecordService;
 import com.heroes.service.DataService;
 import com.heroes.service.IoTMakersService;
 
@@ -22,12 +23,19 @@ public class DataController {
   @Autowired
   private IoTMakersService ioTMakersService;
 
+  @Autowired
+  private BatchService batchService;
+  @Autowired
+  private CafeVisitingRecordService cafeVisitingRecordService;
+  
+
   @ResponseBody
   @RequestMapping(value = "/food/select", method = RequestMethod.GET)
   public ResponseEntity<Object> select() {
 
     //test
-    ioTMakersService.executeAirHourBatch();
+ //   ioTMakersService.executeAirHourBatch();
+    batchService.registBatch("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq","0 0/1 * * * ?",cafeVisitingRecordService,"test");
     
     return ResponseEntity.ok(JSONResult.success(dataService.selectFoodList()));
 
