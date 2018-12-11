@@ -25,10 +25,11 @@ public class CafeVisitingRecordController {
   @Autowired
   private CafeVisitingRecordService cafeVisitingRecordService;
 
-  
-  
+
+
   /**
    * band id, child id만 설정해서 보내줄것
+   * 
    * @param cafeVisitingRecordVo
    * @return
    */
@@ -36,13 +37,10 @@ public class CafeVisitingRecordController {
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody CafeVisitingRecordVo cafeVisitingRecordVo) {
 
-    if (cafeVisitingRecordService.insert(cafeVisitingRecordVo) == 1) {
+    cafeVisitingRecordService.insert(cafeVisitingRecordVo);
 
-      return ResponseEntity.ok(JSONResult.success(cafeVisitingRecordVo, "success"));
+    return ResponseEntity.ok(JSONResult.success(cafeVisitingRecordVo, "success"));
 
-    } else {
-      return ResponseEntity.ok(JSONResult.fail(cafeVisitingRecordVo, "fail"));
-    }
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query")})

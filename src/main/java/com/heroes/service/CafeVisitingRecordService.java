@@ -45,7 +45,17 @@ public class CafeVisitingRecordService extends JobBuilder {
     cafeVisitingRecordVo.setUsingTime(2);
 
     int month = (int) cal.get(cal.MONTH) + 1;
-    String expression = "0 " + cal.get(cal.MINUTE) + " " + cal.get(cal.HOUR_OF_DAY) + " " + cal.get(cal.DATE) + " " + month + " ? " + cal.get(cal.YEAR);
+    
+   
+  //  String expression = "0 " + cal.get(cal.MINUTE) + " " + cal.get(cal.HOUR_OF_DAY) + " " + cal.get(cal.DATE) + " " + month + " ? " + cal.get(cal.YEAR);
+  
+    
+    //test
+    int minute = cal.get(cal.MINUTE)+5;
+    int hour = cal.get(cal.HOUR_OF_DAY)-2;
+    String expression = "0 " + minute + " " + hour + " " + cal.get(cal.DATE) + " " + month + " ? " + cal.get(cal.YEAR);
+    //test
+    
     Object[] param = new Object[1];
     param[0] = cafeVisitingRecordVo;
 

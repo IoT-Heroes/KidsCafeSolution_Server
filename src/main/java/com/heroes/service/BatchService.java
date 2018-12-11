@@ -1,5 +1,6 @@
 package com.heroes.service;
 
+import java.util.UUID;
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -43,7 +44,8 @@ public class BatchService {
 
       // create CRON Trigger
       CronTriggerFactoryBean cronTrigger = new CronTriggerFactoryBean();
-      cronTrigger.setBeanName("HEROES");
+      UUID uuid = UUID.randomUUID();
+      cronTrigger.setBeanName(uuid.toString());
 
       cronTrigger.setCronExpression(expression);
       cronTrigger.afterPropertiesSet();
