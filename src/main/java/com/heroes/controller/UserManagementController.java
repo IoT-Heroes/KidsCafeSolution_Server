@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import com.heroes.dto.JSONResult;
 import com.heroes.service.UserService;
 import com.heroes.vo.UserVo;
-import com.heroes.vo.ZoneVo;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 
@@ -32,7 +29,7 @@ public class UserManagementController {
   @ResponseBody
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody UserVo userVo) {
-    if (userService.insert(userVo) == 1) {
+    if (userService.insert(userVo) ) {
       return ResponseEntity.ok(JSONResult.success(userVo));
     } else {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(userVo); // 로그인 실패로 보낼것.

@@ -12,8 +12,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.heroes.repository.StatisticsDao;
 import com.heroes.repository.ZoneDao;
@@ -50,17 +49,8 @@ public class IoTMakersService {
   }
 
 
-  public int pulseAndActivityBatch() {
-
-    return STATUS_CODE.SUCCESS;
-  }
-
-
   private int executeBatch(String deviceId, String batchType) {
-
-    // getIotMakersData("hong1", "M");
     int result = getIotMakersData(deviceId, batchType);
-
     return result;
   }
 
@@ -89,7 +79,6 @@ public class IoTMakersService {
 
   public int getIotMakersData(String deviceId, String batchType) {
 
-
     Date now = new Date();
     Date pre = getPreDate(now, batchType);
 
@@ -104,8 +93,7 @@ public class IoTMakersService {
     }
 
     String targetURL;
-    int requestDataCounter;
-    IoTMakersDataVo ioTMakersDataVo;
+    IoTMakersDataVo ioTMakersDataVo = null;
 
     targetURL = COMMONDATA.IOT_MAKERS_URL + deviceId + "/log?period=9999&from=" + fromTimestamp.getTime() + "&to=" + toTimestamp.getTime() + "&count=";
     if (deviceId.contains(COMMONDATA.BAND_DEVICE_NAMING_RULE)) {
@@ -113,13 +101,22 @@ public class IoTMakersService {
 
     } else if (deviceId.contains(COMMONDATA.ZONE_DEVICE_NAMING_RULE)) {
       // zone device 일 때
+      int requestDataCounter;
 
       requestDataCounter = (second / COMMONDATA.ZONE_SENSOR_DELAY_TIME) * COMMONDATA.NUM_OF_ZONE_DEVICE_SENSOR;
       targetURL += requestDataCounter;
 
-      ioTMakersDataVo = accessIotMakersData(targetURL);
+      try {
+        ioTMakersDataVo = getIotMakersData(targetURL);
+      } catch (JsonProcessingException e) {
+        e.printStackTrace();
+        return STATUS_CODE.JSON_PROCESSING_EXCEPTION;
+      } catch (IOException e) {
+        e.printStackTrace();
+        return STATUS_CODE.IOEXCEPTION;
+      }
 
-      if (ioTMakersDataVo.setZoneStatisticsData(fromTimestamp.getTime(), toTimestamp.getTime()) != STATUS_CODE.SUCCESS) {
+      if (ioTMakersDataVo != null && ioTMakersDataVo.setZoneStatisticsData(fromTimestamp.getTime(), toTimestamp.getTime()) != STATUS_CODE.SUCCESS) {
         return STATUS_CODE.SET_STATISTICS_DATA_ERROR;
       }
 
@@ -135,14 +132,11 @@ public class IoTMakersService {
       return STATUS_CODE.UNKNOWN_DEVICE_ID;
 
     }
-
-
     return STATUS_CODE.SUCCESS;
   }
 
 
-
-  public IoTMakersDataVo accessIotMakersData(String url) {
+  public IoTMakersDataVo getIotMakersData(String url) throws JsonProcessingException, IOException {
 
     HttpHeaders header = new HttpHeaders();
     header.add(HttpHeaders.AUTHORIZATION, COMMONDATA.IOT_MAKERS_TOKEN);
@@ -152,26 +146,13 @@ public class IoTMakersService {
     return parsingData(response.getBody());
   }
 
-  public IoTMakersDataVo parsingData(String jsonData) {
+  public IoTMakersDataVo parsingData(String jsonData) throws JsonProcessingException, IOException {
 
     ObjectMapper mapper = new ObjectMapper();
     IoTMakersDataVo pasredData = new IoTMakersDataVo();
-    try {
-      pasredData = mapper.readValue(jsonData, IoTMakersDataVo.class);
-
-
-    } catch (JsonParseException e) {
-      e.printStackTrace();
-    } catch (JsonMappingException e) {
-      e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-
+    pasredData = mapper.readValue(jsonData, IoTMakersDataVo.class);
 
     return pasredData;
-
   }
 
 }

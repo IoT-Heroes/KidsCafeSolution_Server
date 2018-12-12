@@ -3,8 +3,10 @@ package com.heroes.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.heroes.exception.CustomException;
 import com.heroes.repository.StatisticsDao;
 import com.heroes.vo.StatisticsVo;
+import api.EXCEPTION_CODE;
 
 @Service
 public class StatisticsService {
@@ -12,15 +14,16 @@ public class StatisticsService {
   @Autowired
   private StatisticsDao statisticsDao;
 
+  
+  
   public List<StatisticsVo> selectAirstate(StatisticsVo statisticsVo) {
 
     if (statisticsVo.getBatchType().equals("H")) {
       return statisticsDao.selectAirStateHourList(statisticsVo);
     } else if (statisticsVo.getBatchType().equals("D")) {
       return statisticsDao.selectAirStateDayList(statisticsVo);
-
     } else {
-      return null;
+      throw new CustomException(EXCEPTION_CODE.BATCH_TYPE_EXCEPTION,"unexcepted batch type : " + statisticsVo.getBatchType());
     }
   }
 
@@ -30,9 +33,8 @@ public class StatisticsService {
       return statisticsDao.selectChildActivityHourList(statisticsVo);
     } else if (statisticsVo.getBatchType().equals("D")) {
       return statisticsDao.selectChildActivityDayList(statisticsVo);
-
     } else {
-      return null;
+      throw new CustomException(EXCEPTION_CODE.BATCH_TYPE_EXCEPTION,"unexcepted batch type : " + statisticsVo.getBatchType());
     }
   }
 
@@ -44,7 +46,7 @@ public class StatisticsService {
       return statisticsDao.selectChildPulseDayList(statisticsVo);
 
     } else {
-      return null;
+      throw new CustomException(EXCEPTION_CODE.BATCH_TYPE_EXCEPTION,"unexcepted batch type : " + statisticsVo.getBatchType());
     }
   }
 
@@ -54,9 +56,8 @@ public class StatisticsService {
       return statisticsDao.selectIncomeHourList(statisticsVo);
     } else if (statisticsVo.getBatchType().equals("D")) {
       return statisticsDao.selectIncomeDayList(statisticsVo);
-
     } else {
-      return null;
+      throw new CustomException(EXCEPTION_CODE.BATCH_TYPE_EXCEPTION,"unexcepted batch type : " + statisticsVo.getBatchType());
     }
   }
 
@@ -68,14 +69,14 @@ public class StatisticsService {
       return statisticsDao.selectUsingFrequencyDayList(statisticsVo);
 
     } else {
-      return null;
+      throw new CustomException(EXCEPTION_CODE.BATCH_TYPE_EXCEPTION,"unexcepted batch type : " + statisticsVo.getBatchType());
     }
   }
 
   public List<StatisticsVo> childusingfrequency(StatisticsVo statisticsVo) {
 
-      return statisticsDao.childusingfrequency(statisticsVo);
-    }
+    return statisticsDao.childusingfrequency(statisticsVo);
+  }
 
   public List<StatisticsVo> selectZonefrequency(StatisticsVo statisticsVo) {
 
@@ -85,21 +86,20 @@ public class StatisticsService {
       return statisticsDao.selectZonefrequencyDayList(statisticsVo);
 
     } else {
-      return null;
+      throw new CustomException(EXCEPTION_CODE.BATCH_TYPE_EXCEPTION,"unexcepted batch type : " + statisticsVo.getBatchType());
     }
   }
-  
+
   public List<StatisticsVo> selectZonefrequencybyage(StatisticsVo statisticsVo) {
 
     if (statisticsVo.getBatchType().equals("H")) {
       return statisticsDao.selectZonefrequencybyageHourList(statisticsVo);
     } else if (statisticsVo.getBatchType().equals("D")) {
       return statisticsDao.selectZonefrequencybyageDayList(statisticsVo);
-
     } else {
-      return null;
+      throw new CustomException(EXCEPTION_CODE.BATCH_TYPE_EXCEPTION,"unexcepted batch type : " + statisticsVo.getBatchType());
     }
   }
-  
-  
+
+
 }

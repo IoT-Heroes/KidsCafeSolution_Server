@@ -2,6 +2,7 @@ package com.heroes.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,95 +34,131 @@ public class StatisticsController {
   @RequestMapping(value = "/airstate/select", method = RequestMethod.GET)
   public ResponseEntity<Object> selectAirstate(@ModelAttribute StatisticsVo statisticsVo) {
 
-    List<StatisticsVo> results = statisticsService.selectAirstate(statisticsVo);
-    return ResponseEntity.ok(JSONResult.success(results));
+    try {
+      List<StatisticsVo> results = statisticsService.selectAirstate(statisticsVo);
+      return ResponseEntity.ok(JSONResult.success(results));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+    }
+
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
-    @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
+      @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/childactivity/select", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildActivity(@ModelAttribute StatisticsVo statisticsVo) {
 
-    List<StatisticsVo> results = statisticsService.selectChildActivity(statisticsVo);
-    return ResponseEntity.ok(JSONResult.success(results));
+    try {
+      List<StatisticsVo> results = statisticsService.selectChildActivity(statisticsVo);
+      return ResponseEntity.ok(JSONResult.success(results));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+    }
+
+
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
-    @ApiImplicitParam(name = "batchType", value = "M or H중 선택", required = true, dataType = "string", paramType = "query")})
+      @ApiImplicitParam(name = "batchType", value = "M or H중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/childpulse/select", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildPulse(@ModelAttribute StatisticsVo statisticsVo) {
 
-    List<StatisticsVo> results = statisticsService.selectChildPulse(statisticsVo);
-    return ResponseEntity.ok(JSONResult.success(results));
+    try {
+      List<StatisticsVo> results = statisticsService.selectChildPulse(statisticsVo);
+      return ResponseEntity.ok(JSONResult.success(results));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+    }
   }
-  @ApiImplicitParams({@ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
-    @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
+
+  @ApiImplicitParams({@ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/income/select", method = RequestMethod.GET)
   public ResponseEntity<Object> selectIncome(@ModelAttribute StatisticsVo statisticsVo) {
 
-    List<StatisticsVo> results = statisticsService.selectIncome(statisticsVo);
-    return ResponseEntity.ok(JSONResult.success(results));
+    try {
+      List<StatisticsVo> results = statisticsService.selectIncome(statisticsVo);
+      return ResponseEntity.ok(JSONResult.success(results));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+    }
+
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "age", value = "연령대", required = true, dataType = "int", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
-    @ApiImplicitParam(name = "batchType", value = "M or H중 선택", required = true, dataType = "string", paramType = "query")})
+      @ApiImplicitParam(name = "batchType", value = "M or H중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/usingfrequency/select", method = RequestMethod.GET)
   public ResponseEntity<Object> selectUsingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
 
-    List<StatisticsVo> results = statisticsService.selectUsingFrequency(statisticsVo);
-    return ResponseEntity.ok(JSONResult.success(results));
+    try {
+      List<StatisticsVo> results = statisticsService.selectUsingFrequency(statisticsVo);
+      return ResponseEntity.ok(JSONResult.success(results));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+    }
   }
 
-  
-  
+
+
   // 특정자녀가 존방문횟수(visiting record 기반)
-  @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), 
-})
+  @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"),})
   @ResponseBody
   @RequestMapping(value = "/childusingfrequency/select", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildusingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
+    try {
+      List<StatisticsVo> results = statisticsService.childusingfrequency(statisticsVo);
+      return ResponseEntity.ok(JSONResult.success(results));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+    }
 
-    List<StatisticsVo> results = statisticsService.childusingfrequency(statisticsVo);
-    return ResponseEntity.ok(JSONResult.success(results));
   }
-  
-  
-  
+
+
+
   /**
    * 놀이구역의 인기도를 날짜별로 구한다.
+   * 
    * @param statisticsVo
    * @return
    */
-  @ApiImplicitParams({ @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
-    @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
+  @ApiImplicitParams({@ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/zonefrequency/select", method = RequestMethod.GET)
   public ResponseEntity<Object> selectZonefrequency(@ModelAttribute StatisticsVo statisticsVo) {
 
-    List<StatisticsVo> results = statisticsService.selectZonefrequency(statisticsVo);
-    return ResponseEntity.ok(JSONResult.success(results));
+    try {
+      List<StatisticsVo> results = statisticsService.selectZonefrequency(statisticsVo);
+      return ResponseEntity.ok(JSONResult.success(results));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+    }
   }
- 
-  
-  
+
+
+
   /**
    * childId와 일치하는 연령대의 놀이구역 인기도를 날짜별로 구한다.
+   * 
    * @param statisticsVo
    * @return
    */
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "childId", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
-    @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
+      @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/zonefrequencybyage/select", method = RequestMethod.GET)
   public ResponseEntity<Object> zonefrequencybyage(@ModelAttribute StatisticsVo statisticsVo) {
 
-    List<StatisticsVo> results = statisticsService.selectZonefrequencybyage(statisticsVo);
-    return ResponseEntity.ok(JSONResult.success(results));
+    try {
+      List<StatisticsVo> results = statisticsService.selectZonefrequencybyage(statisticsVo);
+      return ResponseEntity.ok(JSONResult.success(results));
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+    }
   }
-  
-  
+
+
 }

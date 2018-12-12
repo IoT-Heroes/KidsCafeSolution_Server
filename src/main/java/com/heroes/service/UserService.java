@@ -18,18 +18,15 @@ public class UserService {
   @Autowired
   private ChildDao childDao;
 
-  public int insert(UserVo userVo) {
-    return userDao.insert(userVo);
+  public boolean insert(UserVo userVo) {
+    return userDao.insert(userVo) == 1;
   }
 
   public UserVo login(UserVo userVo) {
     UserVo resultUser = userDao.login(userVo);
     setChild(resultUser);
     return resultUser;
-
   }
-
-
 
   public List<UserVo> selectList(UserVo userVo) {
     List<UserVo> userVoList = userDao.selectList(userVo);
@@ -46,8 +43,8 @@ public class UserService {
       ChildVo childVo = new ChildVo();
       childVo.setUserId(userVo.getId());
       ArrayList<ChildVo> childList = (ArrayList<ChildVo>) childDao.selectList(childVo);
-      
-      for(ChildVo resChildVo:childList ) {
+
+      for (ChildVo resChildVo : childList) {
         resChildVo.setEatableFoodList(childDao.selectEatableFoodList(resChildVo));
       }
       userVo.setChild(childList);

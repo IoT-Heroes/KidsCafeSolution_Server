@@ -30,10 +30,8 @@ public class ZoneManagementController {
 	@ResponseBody
 	@RequestMapping(value = "/select", method = RequestMethod.GET)
 	public ResponseEntity<Object> select(@ModelAttribute ZoneVo zoneVo) {
-
 			List<ZoneVo> results = zoneService.selectList(zoneVo);
 			return ResponseEntity.ok(JSONResult.success(results));
-
 	}
 
 }

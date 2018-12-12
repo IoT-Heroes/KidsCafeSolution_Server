@@ -78,7 +78,7 @@
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="airHourJob" />
 		<!-- CronTrigger를 사용하여 1시간 간격으로 실행되도록 지정 -->
-		<property name="cronExpression" value="0 0 0/1 * * ?" />
+		<property name="cronExpression" value="0 0/1 * * * ?" />
 	</bean>
 
 	<!-- Trigger 2 -->

@@ -10,5 +10,11 @@ public class STATUS_CODE {
   public static final int UNKNOWN_DEVICE_ID = 2003;
   
   public static final int INPUT_ERROR = 2004;
+  
+  public static final int JSON_PROCESSING_EXCEPTION = 3000;
+  public static final int IOEXCEPTION = 3001;
+  
+  
+  
 
 }
