@@ -2,7 +2,6 @@ package com.heroes.service;
 
 import java.util.UUID;
 import org.quartz.Scheduler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
@@ -15,15 +14,13 @@ import org.springframework.web.context.WebApplicationContext;
 @ComponentScan("com.heroes.service")
 @Service
 public class BatchService {
-  @Autowired
-  private CafeVisitingRecordService cafeVisitingRecordService;
 
   /**
    * @param jobName
    * @param expression 배치 스케줄링 표현식
    * @return
    */
-  public int registBatch(String jobName, String expression, Object targetInst, String targetMethond, Object[] arguments) {
+  public int registBatch(String jobName, String expression, Object targetInst, String targetMethond, Object[] arguments) throws Exception {
 
 
     // get the quartzFactory bean
@@ -31,8 +28,7 @@ public class BatchService {
 
     Scheduler scheduler = (Scheduler) context.getBean("JobScheduler");;
 
-    try {
-      // create JOB
+    // create JOB
       MethodInvokingJobDetailFactoryBean jobDetail = new MethodInvokingJobDetailFactoryBean();
       jobDetail.setTargetObject(targetInst);
       jobDetail.setTargetMethod(targetMethond);
@@ -51,10 +47,6 @@ public class BatchService {
       cronTrigger.afterPropertiesSet();
 
       scheduler.scheduleJob(jobDetail.getObject(), cronTrigger.getObject());
-
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
     return 0;
 
   }

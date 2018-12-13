@@ -14,5 +14,9 @@ public class COMMONDATA {
   public static final String ZONE_DEVICE_NAMING_RULE = "zone";
   public static final String BAND_DEVICE_NAMING_RULE = "band";
   
+  
+  public static final String INSERT_SUCCESS_STR ="Insert success";
+  public static final String INSERT_FAIL_STR ="Insert fail";
+  
   public static final int DEFAULT_USING_TIME = 2;
 }

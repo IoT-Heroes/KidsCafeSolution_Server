@@ -15,6 +15,6 @@ public class STATUS_CODE {
   public static final int IOEXCEPTION = 3001;
   
   
-  
+  public static final int BATCH_TYPE_EXCEPTION = 4001;
 
 }

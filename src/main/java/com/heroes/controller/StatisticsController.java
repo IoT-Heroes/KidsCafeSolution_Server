@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.heroes.dto.JSONResult;
 import com.heroes.service.StatisticsService;
 import com.heroes.vo.StatisticsVo;
+import api.ResponseHelper;
+import api.STATUS;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -25,7 +27,7 @@ public class StatisticsController {
 
   @Autowired
   private StatisticsService statisticsService;
-
+  ResponseHelper responseHelper = new ResponseHelper();
 
 
   @ApiImplicitParams({@ApiImplicitParam(name = "zoneId", value = "놀이구역ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
@@ -36,11 +38,10 @@ public class StatisticsController {
 
     try {
       List<StatisticsVo> results = statisticsService.selectAirstate(statisticsVo);
-      return ResponseEntity.ok(JSONResult.success(results));
+      return responseHelper.success(results, STATUS.SELECT_SUCCESS);
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+      return responseHelper.fail(statisticsVo, e);
     }
-
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
@@ -51,12 +52,10 @@ public class StatisticsController {
 
     try {
       List<StatisticsVo> results = statisticsService.selectChildActivity(statisticsVo);
-      return ResponseEntity.ok(JSONResult.success(results));
+      return responseHelper.success(results, STATUS.SELECT_SUCCESS);
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+      return responseHelper.fail(statisticsVo, e);
     }
-
-
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
@@ -67,9 +66,9 @@ public class StatisticsController {
 
     try {
       List<StatisticsVo> results = statisticsService.selectChildPulse(statisticsVo);
-      return ResponseEntity.ok(JSONResult.success(results));
+      return responseHelper.success(results, STATUS.SELECT_SUCCESS);
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+      return responseHelper.fail(statisticsVo, e);
     }
   }
 
@@ -80,9 +79,9 @@ public class StatisticsController {
 
     try {
       List<StatisticsVo> results = statisticsService.selectIncome(statisticsVo);
-      return ResponseEntity.ok(JSONResult.success(results));
+      return responseHelper.success(results, STATUS.SELECT_SUCCESS);
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+      return responseHelper.fail(statisticsVo, e);
     }
 
   }
@@ -95,9 +94,9 @@ public class StatisticsController {
 
     try {
       List<StatisticsVo> results = statisticsService.selectUsingFrequency(statisticsVo);
-      return ResponseEntity.ok(JSONResult.success(results));
+      return responseHelper.success(results, STATUS.SELECT_SUCCESS);
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+      return responseHelper.fail(statisticsVo, e);
     }
   }
 
@@ -110,9 +109,9 @@ public class StatisticsController {
   public ResponseEntity<Object> selectChildusingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
     try {
       List<StatisticsVo> results = statisticsService.childusingfrequency(statisticsVo);
-      return ResponseEntity.ok(JSONResult.success(results));
+      return responseHelper.success(results, STATUS.SELECT_SUCCESS);
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
+      return responseHelper.fail(statisticsVo, e);
     }
 
   }
