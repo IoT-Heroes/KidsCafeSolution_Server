@@ -34,18 +34,14 @@ public class CafeVisitingRecordController {
    * 
    * @param cafeVisitingRecordVo
    * @return
+   * @throws Exception 
    */
   @ResponseBody
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
-  public ResponseEntity<Object> insert(@RequestBody CafeVisitingRecordVo cafeVisitingRecordVo) {
+  public ResponseEntity<Object> insert(@RequestBody CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
 
     STATUS status;
-    try {
-      status = cafeVisitingRecordService.insert(cafeVisitingRecordVo);
-    } catch (Exception e) {
-      return responseHelper.fail(cafeVisitingRecordVo, e);
-    }
-
+    status = cafeVisitingRecordService.insert(cafeVisitingRecordVo);
     return responseHelper.sendResponse(cafeVisitingRecordVo, status);
   }
 
@@ -54,28 +50,21 @@ public class CafeVisitingRecordController {
   @RequestMapping(value = "/select", method = RequestMethod.GET)
   public ResponseEntity<Object> select(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) {
 
+
     List<CafeVisitingRecordVo> results = null;
-    try {
-      results = cafeVisitingRecordService.selectList(cafeVisitingRecordVo);
-      return responseHelper.success(results, STATUS.SELECT_SUCCESS);
-    } catch (Exception e) {
-      return responseHelper.fail(cafeVisitingRecordVo, e);
-    }
+    return responseHelper.success(results, STATUS.SELECT_SUCCESS);
 
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
-  public ResponseEntity<Object> put(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) {
+  public ResponseEntity<Object> put(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
 
     STATUS status;
-    try {
-      status = cafeVisitingRecordService.update(cafeVisitingRecordVo);
-    } catch (Exception e) {
-      return responseHelper.fail(cafeVisitingRecordVo, e);
-    }
-    
+
+    status = cafeVisitingRecordService.update(cafeVisitingRecordVo);
+
     return responseHelper.sendResponse(cafeVisitingRecordVo, status);
   }
 }

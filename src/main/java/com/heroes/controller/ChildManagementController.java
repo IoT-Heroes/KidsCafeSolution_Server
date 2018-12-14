@@ -29,11 +29,7 @@ public class ChildManagementController {
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody List<ChildVo> childVoList) {
     STATUS status;
-    try {
       status = childService.insert(childVoList);
-    } catch (Exception e) {
-      return responseHelper.fail(childVoList, e);
-    }
     return responseHelper.sendResponse(childVoList, status);
   }
 
@@ -42,11 +38,7 @@ public class ChildManagementController {
   public ResponseEntity<Object> select(@ModelAttribute ChildVo childVo) {
 
     List<ChildVo> results = null;
-    try {
-      results = childService.selectList(childVo);
-    } catch (Exception e) {
-      return responseHelper.fail(results, e);
-    }
+    results = childService.selectList(childVo);
     return responseHelper.success(results, STATUS.SUCCESS);
   }
 }

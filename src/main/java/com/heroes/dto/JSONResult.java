@@ -4,10 +4,37 @@ public class JSONResult {
   private String result;
   private String message;
   private Object data;
+  private int state;
 
   private JSONResult(String result, String message, Object data) {
     this.result = result;
     this.message = message;
+    this.data = data;
+  }
+  
+  private JSONResult(String message, int state) {
+    this.message = message;
+    this.state = state;
+  }
+
+
+  public int getState() {
+    return state;
+  }
+
+  public void setState(int state) {
+    this.state = state;
+  }
+
+  public void setResult(String result) {
+    this.result = result;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public void setData(Object data) {
     this.data = data;
   }
 
@@ -23,8 +50,13 @@ public class JSONResult {
     return new JSONResult("fail", message, data);
   }
 
+
   public static JSONResult fail(String message) {
     return new JSONResult("fail", message, null);
+  }
+  
+  public static JSONResult fail(String message,int state) {
+    return new JSONResult(message, state);
   }
 
   public String getResult() {

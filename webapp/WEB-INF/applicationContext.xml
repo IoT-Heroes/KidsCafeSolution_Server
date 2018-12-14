@@ -19,7 +19,7 @@
 
 
 	<context:component-scan
-		base-package="com.heroes.repository, com.heroes.service, com.heroes.aspect">
+		base-package="com.heroes.repository, com.heroes.service, com.heroes.aspect,com.heroes.exception">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Repository" />
 		<context:include-filter type="annotation"
@@ -78,7 +78,7 @@
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="airHourJob" />
 		<!-- CronTrigger를 사용하여 1시간 간격으로 실행되도록 지정 -->
-		<property name="cronExpression" value="0 0/1 * * * ?" />
+		<property name="cronExpression" value="0 0 0/1 * * ?" />
 	</bean>
 
 	<!-- Trigger 2 -->
@@ -97,7 +97,7 @@
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="testJob2" />
 		<!-- CronTrigger를 사용하여 2분 간격으로 실행되도록 지정했습니다. -->
-		<property name="cronExpression" value="0 0/2 * * * ?" />
+		<property name="cronExpression" value="0 0 0/1 * * ?" />
 	</bean>
 
 	<!-- 테스트용 스케줄러 -->
