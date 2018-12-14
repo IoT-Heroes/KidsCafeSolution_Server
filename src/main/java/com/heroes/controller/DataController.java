@@ -20,22 +20,9 @@ public class DataController {
   @Autowired
   private DataService dataService;
 
-  @Autowired
-  private IoTMakersService ioTMakersService;
-
-  @Autowired
-  private BatchService batchService;
-  @Autowired
-  private CafeVisitingRecordService cafeVisitingRecordService;
-
-
   @ResponseBody
   @RequestMapping(value = "/food/select", method = RequestMethod.GET)
   public ResponseEntity<Object> select() {
-
-    // test
-    // ioTMakersService.executeAirHourBatch();
-    // batchService.registBatch("qqqqqqqqqqqq","0 0/1 * * * ?",cafeVisitingRecordService,"test");
 
     return ResponseEntity.ok(JSONResult.success(dataService.selectFoodList()));
 

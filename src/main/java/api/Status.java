@@ -1,6 +1,6 @@
 package api;
 
-public enum STATUS {
+public enum Status {
 
    SUCCESS(200,"SUCCESS")   
   ,INSERT_SUCCESS(2001,"INSERT_SUCCESS")
@@ -35,7 +35,7 @@ public enum STATUS {
   private final int codeName;
   private final String detail;
 
-  private STATUS(int code, String detailStr) {
+  private Status(int code, String detailStr) {
     this.codeName = code;
     this.detail = detailStr;
   }

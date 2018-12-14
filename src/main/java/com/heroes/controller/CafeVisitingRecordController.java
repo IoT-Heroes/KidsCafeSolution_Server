@@ -16,7 +16,7 @@ import com.heroes.service.CafeVisitingRecordService;
 import com.heroes.vo.CafeVisitingRecordVo;
 import api.COMMONDATA;
 import api.ResponseHelper;
-import api.STATUS;
+import api.Status;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 
@@ -39,8 +39,7 @@ public class CafeVisitingRecordController {
   @ResponseBody
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
-
-    STATUS status;
+    Status status;
     status = cafeVisitingRecordService.insert(cafeVisitingRecordVo);
     return responseHelper.sendResponse(cafeVisitingRecordVo, status);
   }
@@ -49,22 +48,16 @@ public class CafeVisitingRecordController {
   @ResponseBody
   @RequestMapping(value = "/select", method = RequestMethod.GET)
   public ResponseEntity<Object> select(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) {
-
-
     List<CafeVisitingRecordVo> results = null;
-    return responseHelper.success(results, STATUS.SELECT_SUCCESS);
-
+    return responseHelper.success(results, Status.SELECT_SUCCESS);
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/update", method = RequestMethod.PUT)
   public ResponseEntity<Object> put(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
-
-    STATUS status;
-
+    Status status;
     status = cafeVisitingRecordService.update(cafeVisitingRecordVo);
-
     return responseHelper.sendResponse(cafeVisitingRecordVo, status);
   }
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import api.ResponseHelper;
-import api.STATUS;
+import api.Status;
 
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -23,44 +23,44 @@ public class GlobalExceptionHandler {
   @ResponseBody
   public ResponseEntity<Object> handlerException(Exception exception) {
 
-    STATUS status;
+    Status status;
     HttpStatus httpStatus;
     
     if (exception instanceof DataIntegrityViolationException) {
-      status = STATUS.DATA_INTEGRITY_VIOLATION_EXCEPTION;
+      status = Status.DATA_INTEGRITY_VIOLATION_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
     } else if (exception instanceof PSQLException) {
-      status = STATUS.PSQL_EXCEPTION;
+      status = Status.PSQL_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
     } else if (exception instanceof ParseException) {
-      status = STATUS.PARSE_EXCEPTION;
+      status = Status.PARSE_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
     } else if (exception instanceof ClassNotFoundException) {
-      status = STATUS.CALSS_NOT_FOUND_EXCEPTION;
+      status = Status.CALSS_NOT_FOUND_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
     } else if (exception instanceof NoSuchMethodException) {
-      status = STATUS.NO_SUCH_METHOD_EXCEPTION;
+      status = Status.NO_SUCH_METHOD_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
     } else if (exception instanceof SchedulerException) {
-      status = STATUS.SCHEDULER_EXCEPTION;
+      status = Status.SCHEDULER_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
     } else if (exception instanceof SQLException) {
-      status = STATUS.SQL_EXCEPTION;
+      status = Status.SQL_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
     } else if (exception instanceof SQLException) {
-      status = STATUS.SQL_EXCEPTION;
+      status = Status.SQL_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
     }  
     else {
-      status = STATUS.UNKNOWN_EXCEPTION;
+      status = Status.UNKNOWN_EXCEPTION;
       httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
       
     }

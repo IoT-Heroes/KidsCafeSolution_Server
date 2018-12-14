@@ -14,7 +14,7 @@ import com.heroes.dto.JSONResult;
 import com.heroes.service.ChildService;
 import com.heroes.vo.ChildVo;
 import api.ResponseHelper;
-import api.STATUS;
+import api.Status;
 
 @CrossOrigin(origins = "*")
 @Controller
@@ -28,8 +28,8 @@ public class ChildManagementController {
   @ResponseBody
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody List<ChildVo> childVoList) {
-    STATUS status;
-      status = childService.insert(childVoList);
+    Status status;
+    status = childService.insert(childVoList);
     return responseHelper.sendResponse(childVoList, status);
   }
 
@@ -39,6 +39,6 @@ public class ChildManagementController {
 
     List<ChildVo> results = null;
     results = childService.selectList(childVo);
-    return responseHelper.success(results, STATUS.SUCCESS);
+    return responseHelper.success(results, Status.SUCCESS);
   }
 }

@@ -15,7 +15,7 @@ import com.heroes.exception.CustomException;
 import com.heroes.repository.CafeVisitingRecordDao;
 import com.heroes.vo.CafeVisitingRecordVo;
 import api.COMMONDATA;
-import api.STATUS;
+import api.Status;
 
 @Service("CafeVisitingRecordService")
 public class CafeVisitingRecordService extends JobBuilder {
@@ -26,9 +26,9 @@ public class CafeVisitingRecordService extends JobBuilder {
   @Autowired
   private BatchService batchService;
 
-  STATUS status;
+  Status status;
 
-  public STATUS insert(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
+  public Status insert(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
 
     UUID uuid = UUID.randomUUID();
 
@@ -60,32 +60,32 @@ public class CafeVisitingRecordService extends JobBuilder {
 
 
     if (!cafeVisitingRecordDao.insert(cafeVisitingRecordVo)) {
-      return STATUS.INSERT_SUCCESS;
+      return Status.INSERT_SUCCESS;
     }
 
     if (!cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo)) {
-      return STATUS.UPDATE_FAIL;
+      return Status.UPDATE_FAIL;
     }
 
     batchService.registBatch(uuid.toString(), expression, this, "update", param);
 
-    return STATUS.INSERT_SUCCESS;
+    return Status.INSERT_SUCCESS;
   }
 
   public List<CafeVisitingRecordVo> selectList(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
     return cafeVisitingRecordDao.selectList(cafeVisitingRecordVo);
   }
 
-  public STATUS update(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
+  public Status update(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
 
     if (!cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo))
-      return STATUS.UPDATE_FAIL;
+      return Status.UPDATE_FAIL;
 
     if (!cafeVisitingRecordDao.updateCafeVisitingRecord(cafeVisitingRecordVo))
-      return STATUS.UPDATE_FAIL;
+      return Status.UPDATE_FAIL;
 
 
-    return STATUS.UPDATE_FAIL;
+    return Status.UPDATE_FAIL;
   }
 
 }
