@@ -29,8 +29,6 @@ public class CafeVisitingRecordController {
   private CafeVisitingRecordService cafeVisitingRecordService;
   ResponseHelper responseHelper = new ResponseHelper();
 
-
-
   /**
    * band id, child id만 설정해서 보내줄것
    * 

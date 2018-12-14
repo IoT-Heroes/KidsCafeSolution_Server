@@ -39,19 +39,11 @@ public class ChildManagementController {
        }
   }
   
-  @ApiImplicitParams({
-    @ApiImplicitParam(name = "id", value = "자녀ID", required = true,dataType = "string", paramType = "query"),
-})
   @ResponseBody
   @RequestMapping(value = "/select", method = RequestMethod.GET)
   public ResponseEntity<Object> select(@ModelAttribute ChildVo childVo) {
 
-    if (childVo.getId() != null) {
       List<ChildVo> results = childService.selectList(childVo);
       return ResponseEntity.ok(JSONResult.success(results));
-    } else {
-      return ResponseEntity.ok(JSONResult.success(null));
-
-    }
   }
 }
