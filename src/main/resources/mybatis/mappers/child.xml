@@ -8,7 +8,7 @@
 			INSERT INTO K_CHILD 
 				(ID,USER_ID,NAME,TARGET_ACTIVITY_FIGURE,BIRTH,HEIGHT,WEIGHT,SEX) 
 			VALUES 
-				(#{id},	#{userId}, #{name}, #{targetActivityFigure}, #{birth}, #{height}, #{weight}, #{sex}) 
+				(#{id},	#{userId}, #{name}, #{targetActivityFigure}, #{birth}::timestamp, #{height}, #{weight}, #{sex}) 
 		]]>
 	</insert>
 

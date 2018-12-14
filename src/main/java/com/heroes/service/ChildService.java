@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.heroes.repository.ChildDao;
 import com.heroes.vo.ChildVo;
 import com.heroes.vo.FoodVo;
+import api.STATUS;
 import api.STATUS_CODE;
 
 @Service
@@ -21,7 +22,7 @@ public class ChildService {
     return childDao.insert(childVo);
   }
   
-  public int insert(List<ChildVo> childVoList) {
+  public STATUS insert(List<ChildVo> childVoList) {
     int insertCounter = 0; 
     
     for(ChildVo paramChildVo:childVoList) {
@@ -31,14 +32,12 @@ public class ChildService {
     }
       
     if(insertCounter != childVoList.size()) {
-      // insert error occured
-      // rollback!
-      return STATUS_CODE.INPUT_ERROR;
+      return STATUS.INSERT_FAIL;
     }
-    return insertCounter;
+    return STATUS.INSERT_SUCCESS;
   }
 
-  public List<ChildVo> selectList(ChildVo childVo) {
+  public List<ChildVo> selectList(ChildVo childVo)  {
     List<ChildVo> childVoList = childDao.selectList(childVo);
     for (ChildVo resChildVo : childVoList) {
       List<FoodVo> eatableFoodList = childDao.selectEatableFoodList(childVo);

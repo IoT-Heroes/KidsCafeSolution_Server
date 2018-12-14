@@ -13,19 +13,29 @@ public class CafeVisitingRecordDao {
   @Autowired
   private SqlSession sqlSession;
 
-  public int insert(CafeVisitingRecordVo cafeVisitingRecordVo) {
-    return sqlSession.insert("cafeVisitingRecord.insertCafeVisitingRecord", cafeVisitingRecordVo);
+  public boolean insert(CafeVisitingRecordVo cafeVisitingRecordVo) {
+    if (sqlSession.insert("cafeVisitingRecord.insertCafeVisitingRecord", cafeVisitingRecordVo) < 0) {
+      return false;
+    }
+    return true;
   }
 
   public List<CafeVisitingRecordVo> selectList(CafeVisitingRecordVo cafeVisitingRecordVo) {
     return sqlSession.selectList("cafeVisitingRecord.selectList", cafeVisitingRecordVo);
   }
-  
-  public int updateCafeVisitingRecord(CafeVisitingRecordVo cafeVisitingRecordVo) {
-    return sqlSession.update("cafeVisitingRecord.updateCafeVisitingRecord", cafeVisitingRecordVo);
+
+  public boolean updateCafeVisitingRecord(CafeVisitingRecordVo cafeVisitingRecordVo) {
+    if (sqlSession.update("cafeVisitingRecord.updateCafeVisitingRecord", cafeVisitingRecordVo) < 0) {
+      return false;
+    }
+    return true;
   }
-  
-  public int updateBandDevice(CafeVisitingRecordVo cafeVisitingRecordVo) {
-    return sqlSession.update("cafeVisitingRecord.updateBandDevice", cafeVisitingRecordVo);    
+
+  public boolean updateBandDevice(CafeVisitingRecordVo cafeVisitingRecordVo) {
+    if (sqlSession.update("cafeVisitingRecord.updateBandDevice", cafeVisitingRecordVo) < 0) {
+      return false;
+    }
+    return true;
+
   }
 }

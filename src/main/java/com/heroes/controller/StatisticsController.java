@@ -29,7 +29,6 @@ public class StatisticsController {
   private StatisticsService statisticsService;
   ResponseHelper responseHelper = new ResponseHelper();
 
-
   @ApiImplicitParams({@ApiImplicitParam(name = "zoneId", value = "놀이구역ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
       @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
@@ -83,7 +82,6 @@ public class StatisticsController {
     } catch (Exception e) {
       return responseHelper.fail(statisticsVo, e);
     }
-
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "age", value = "연령대", required = true, dataType = "int", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
@@ -100,8 +98,6 @@ public class StatisticsController {
     }
   }
 
-
-
   // 특정자녀가 존방문횟수(visiting record 기반)
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"),})
   @ResponseBody
@@ -115,8 +111,6 @@ public class StatisticsController {
     }
 
   }
-
-
 
   /**
    * 놀이구역의 인기도를 날짜별로 구한다.
@@ -136,8 +130,6 @@ public class StatisticsController {
       return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(JSONResult.fail(statisticsVo, e.getMessage()));
     }
   }
-
-
 
   /**
    * childId와 일치하는 연령대의 놀이구역 인기도를 날짜별로 구한다.

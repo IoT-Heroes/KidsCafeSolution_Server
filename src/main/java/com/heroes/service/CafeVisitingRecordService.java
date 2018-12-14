@@ -30,7 +30,6 @@ public class CafeVisitingRecordService extends JobBuilder {
 
   public STATUS insert(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
 
-
     UUID uuid = UUID.randomUUID();
 
     Date now = new Date();
@@ -43,14 +42,11 @@ public class CafeVisitingRecordService extends JobBuilder {
     Timestamp fromTimestamp = new Timestamp(now.getTime());
     Timestamp toTimestamp = new Timestamp(expire.getTime());
 
-
-
     cafeVisitingRecordVo.setStartDate(fromTimestamp.toString());
     cafeVisitingRecordVo.setEndDate(toTimestamp.toString());
     cafeVisitingRecordVo.setUsingTime(2);
 
     int month = (int) cal.get(cal.MONTH) + 1;
-
 
     // test 할 땐 minute++을 해서 테스트
     int minute = cal.get(cal.MINUTE);
@@ -62,12 +58,18 @@ public class CafeVisitingRecordService extends JobBuilder {
     Object[] param = new Object[1];
     param[0] = cafeVisitingRecordVo;
 
-    cafeVisitingRecordDao.insert(cafeVisitingRecordVo);
-    cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo);
+
+    if (!cafeVisitingRecordDao.insert(cafeVisitingRecordVo)) {
+      return STATUS.INSERT_SUCCESS;
+    }
+
+    if (!cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo)) {
+      return STATUS.UPDATE_FAIL;
+    }
 
     batchService.registBatch(uuid.toString(), expression, this, "update", param);
 
-    return STATUS.SUCCESS;
+    return STATUS.INSERT_SUCCESS;
   }
 
   public List<CafeVisitingRecordVo> selectList(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
@@ -75,12 +77,15 @@ public class CafeVisitingRecordService extends JobBuilder {
   }
 
   public STATUS update(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
-    cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo);
-    int updated = cafeVisitingRecordDao.updateCafeVisitingRecord(cafeVisitingRecordVo);
-    if (updated > -1)
-      return STATUS.UPDATE_SUCCESS;
-    else
+
+    if (!cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo))
       return STATUS.UPDATE_FAIL;
+
+    if (!cafeVisitingRecordDao.updateCafeVisitingRecord(cafeVisitingRecordVo))
+      return STATUS.UPDATE_FAIL;
+
+
+    return STATUS.UPDATE_FAIL;
   }
 
 }

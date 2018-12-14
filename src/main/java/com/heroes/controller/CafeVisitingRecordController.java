@@ -46,12 +46,7 @@ public class CafeVisitingRecordController {
       return responseHelper.fail(cafeVisitingRecordVo, e);
     }
 
-    if (STATUS.SUCCESS == status) {
-      return responseHelper.success(cafeVisitingRecordVo, STATUS.INSERT_SUCCESS);
-    } else {
-      return responseHelper.fail(cafeVisitingRecordVo, STATUS.INSERT_FAIL);
-    }
-
+    return responseHelper.sendResponse(cafeVisitingRecordVo, status);
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query")})
@@ -67,7 +62,6 @@ public class CafeVisitingRecordController {
       return responseHelper.fail(cafeVisitingRecordVo, e);
     }
 
-
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query")})
@@ -81,10 +75,7 @@ public class CafeVisitingRecordController {
     } catch (Exception e) {
       return responseHelper.fail(cafeVisitingRecordVo, e);
     }
-    if (STATUS.SUCCESS == status) {
-      return responseHelper.success(cafeVisitingRecordVo, STATUS.UPDATE_SUCCESS);
-    } else {
-      return responseHelper.fail(cafeVisitingRecordVo, STATUS.UPDATE_FAIL);
-    }
+    
+    return responseHelper.sendResponse(cafeVisitingRecordVo, status);
   }
 }
