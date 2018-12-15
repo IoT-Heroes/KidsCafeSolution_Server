@@ -20,7 +20,7 @@ import com.heroes.vo.IoTMakersDataVo;
 import com.heroes.vo.StatisticsVo;
 import com.heroes.vo.ZoneVo;
 import api.Data;
-import api.STATUS_CODE;
+import api.Status;
 
 @Service("IoTMakersService")
 public class IoTMakersService {
@@ -34,24 +34,23 @@ public class IoTMakersService {
   RestTemplate restTemplate = new RestTemplate();
 
 
-  public int executeAirHourBatch() {
+  public Status executeAirHourBatch() {
 
     List<ZoneVo> zoneDeviceList = zoneDao.selectZoneDevice(new ZoneVo());
 
     for (ZoneVo zoneDevice : zoneDeviceList) {
 
-      if (executeBatch(zoneDevice.getDeviceId(), Data.BATCH_TYPE_HOUR) != STATUS_CODE.SUCCESS) {
-        return STATUS_CODE.BATCH_ERROR;
+      if (executeBatch(zoneDevice.getDeviceId(), Data.BATCH_TYPE_HOUR) != Status.SUCCESS) {
+        return Status.BATCH_FAIL;
       }
     }
 
-    return STATUS_CODE.SUCCESS;
+    return Status.SUCCESS;
   }
 
 
-  private int executeBatch(String deviceId, String batchType) {
-    int result = getIotMakersData(deviceId, batchType);
-    return result;
+  private Status executeBatch(String deviceId, String batchType) {
+    return getIotMakersData(deviceId, batchType);
   }
 
   /**
@@ -77,7 +76,7 @@ public class IoTMakersService {
   }
 
 
-  public int getIotMakersData(String deviceId, String batchType) {
+  public Status getIotMakersData(String deviceId, String batchType) {
 
     Date now = new Date();
     Date pre = getPreDate(now, batchType);
@@ -110,14 +109,14 @@ public class IoTMakersService {
         ioTMakersDataVo = getIotMakersData(targetURL);
       } catch (JsonProcessingException e) {
         e.printStackTrace();
-        return STATUS_CODE.JSON_PROCESSING_EXCEPTION;
+        return Status.JSON_PROCESSING_EXCEPTION;
       } catch (IOException e) {
         e.printStackTrace();
-        return STATUS_CODE.IOEXCEPTION;
+        return Status.IOEXCEPTION;
       }
 
-      if (ioTMakersDataVo != null && ioTMakersDataVo.setZoneStatisticsData(fromTimestamp.getTime(), toTimestamp.getTime()) != STATUS_CODE.SUCCESS) {
-        return STATUS_CODE.SET_STATISTICS_DATA_ERROR;
+      if (ioTMakersDataVo != null && ioTMakersDataVo.setZoneStatisticsData(fromTimestamp.getTime(), toTimestamp.getTime()) != Status.SUCCESS) {
+        return Status.SET_STATISTICS_DATA_ERROR;
       }
 
       StatisticsVo statisticsVo = new StatisticsVo();
@@ -129,9 +128,9 @@ public class IoTMakersService {
       statisticsDao.insertAirStateHour(statisticsVo);
 
     } else {
-      return STATUS_CODE.UNKNOWN_DEVICE_ID;
+      return Status.UNKNOWN_DEVICE_ID;
     }
-    return STATUS_CODE.SUCCESS;
+    return Status.SUCCESS;
   }
 
   public IoTMakersDataVo getIotMakersData(String url) throws JsonProcessingException, IOException {

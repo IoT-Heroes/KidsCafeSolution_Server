@@ -1,18 +1,23 @@
 package com.heroes.exception;
 
-public class CustomException extends RuntimeException  {
-  Exception exception;
-  private final int exceptionType;
-  public CustomException(int exceptionType,String message) {
-    super( "Exception occurs : " + message );
-    
-    this.exceptionType = exceptionType;
-  }
-  
-  public CustomException(Exception exception) {
-    this.exception = exception;
-    this.exceptionType = 0;
-  }
+import api.Status;
+
+public class CustomException extends RuntimeException {
+	Exception exception;
+	private final Status status;
+
+	public CustomException(Status status, String message) {
+		super("Exception occurs : " + message);
+
+		this.status = status;
+	}
+
+	public CustomException(Exception exception) {
+		this.exception = exception;
+		this.status = Status.UNKNOWN_EXCEPTION;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
 }
-
-

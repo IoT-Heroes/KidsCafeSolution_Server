@@ -4,8 +4,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import api.STATUS_CODE;
+
+import api.Status;
 
 public class IoTMakersDataVo {
 
@@ -23,7 +25,7 @@ public class IoTMakersDataVo {
    * @param toTime
    * @return
    */
-  public int setZoneStatisticsData(Long fromTime, Long toTime) {
+  public Status setZoneStatisticsData(Long fromTime, Long toTime) {
 
     Long targetTime = null;
     Date targetDate = null;
@@ -34,7 +36,7 @@ public class IoTMakersDataVo {
         targetTime = targetDate.getTime();
       } catch (ParseException e) {
         e.printStackTrace();
-        return STATUS_CODE.PARSING_ERROR;
+        return Status.PARSE_EXCEPTION;
       }
 
 
@@ -52,7 +54,7 @@ public class IoTMakersDataVo {
     averageHumid /= humidCounter;
     averageTemp /= tempCounter;
 
-    return STATUS_CODE.SUCCESS;
+    return Status.SUCCESS;
   }
   
   

@@ -15,17 +15,23 @@
 	<select id="selectList" resultType="cafevisitingrecordvo">
 		SELECT
 		(SELECT NAME FROM K_CHILD WHERE ID = CHILD_ID) AS CHILDNAME,
-		#{childId} CHILDID,
+		CHILD_ID CHILDID,
 		START_DATE STARTDATE,
 		BAND_DEVICE_ID BANDDEVICEID,
 		END_DATE ENDDATE,
 		AMOUNT_PRICE AMOUNTPRICE,
 		USING_TIME USINGTIME
-		FROM CAFE_VISITING_RECORD
+		FROM
+		CAFE_VISITING_RECORD
 		WHERE 1 = 1
-		<if test="childId != ''">
+		<if test="childId != '' and childId != null">
 		  <![CDATA[	
 	  		AND CHILD_ID = #{childId}
+		  	]]>
+		</if>
+		<if test="endDate != '' and endDate != null">
+		  <![CDATA[	
+	  		AND to_char(END_DATE, 'YYYY-MM-DD HH24:MI') = to_char(now()::timestamp, 'YYYY-MM-DD HH24:MI')
 		  	]]>
 		</if>
 		ORDER BY STARTDATE DESC

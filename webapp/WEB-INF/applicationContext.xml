@@ -81,29 +81,26 @@
 		<property name="cronExpression" value="0 0 0/1 * * ?" />
 	</bean>
 
-<!-- 	<bean id="testJob2"
+ 	<bean id="inOutManageJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		<property name="targetObject" ref="DepartmentsService" />
-		<property name="targetMethod" value="testCall2" />
+		<property name="targetObject" ref="CafeVisitingRecordService" />
+		<property name="targetMethod" value="update" />
 		<property name="concurrent" value="false" />
 	</bean>
 
-	<bean id="testJobTrigger2"
+	<bean id="inOutManageTrigger"
 		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
-		<property name="jobDetail" ref="testJob2" />
-		<property name="cronExpression" value="0 0 0/1 * * ?" />
+		<property name="jobDetail" ref="inOutManageJob" />
+		<property name="cronExpression" value="0 0/1 * * * ?" />
 	</bean>
- -->
-	<!-- 테스트용 스케줄러 -->
-	
-	
+ 
 	<bean id="JobScheduler"
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 	<!-- 		앞에서 설정한 트리거를 등록합니다. 필요하면 여러개 만들어서 등록하면 됩니다. -->
 			<list>
 				<ref bean="airMinuteJobTrigger" />
-<!-- 				<ref bean="testJobTrigger2" /> -->
+ 				<ref bean="inOutManageTrigger" />
 			</list>
 		</property>
 	</bean>
