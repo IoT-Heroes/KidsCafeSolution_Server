@@ -23,9 +23,6 @@ public class CafeVisitingRecordService extends JobBuilder {
 	@Autowired
 	private CafeVisitingRecordDao cafeVisitingRecordDao;
 
-	@Autowired
-	private BatchService batchService;
-
 	Status status;
 
 	public Status insert(CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {

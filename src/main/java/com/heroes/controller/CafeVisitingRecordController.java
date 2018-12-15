@@ -33,7 +33,7 @@ public class CafeVisitingRecordController {
    * band id, child id만 설정해서 보내줄것
    */
   @ResponseBody
-  @RequestMapping(value = "/", method = RequestMethod.POST)
+  @RequestMapping(value = "", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
     Status status;
     status = cafeVisitingRecordService.insert(cafeVisitingRecordVo);
@@ -44,7 +44,7 @@ public class CafeVisitingRecordController {
   
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
-  @RequestMapping(value = "/", method = RequestMethod.GET)
+  @RequestMapping(value = "", method = RequestMethod.GET)
   public ResponseEntity<Object> select(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {
     List<CafeVisitingRecordVo> results = cafeVisitingRecordService.selectList(cafeVisitingRecordVo);
     return responseHandler.success(results, Status.SELECT_SUCCESS);

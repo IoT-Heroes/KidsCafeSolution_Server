@@ -26,7 +26,7 @@ public class ChildManagementController {
   ResponseHandler responseHandler = new ResponseHandler();
 
   @ResponseBody
-  @RequestMapping(value = "/", method = RequestMethod.POST)
+  @RequestMapping(value = "", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody List<ChildVo> childVoList) {
     Status status;
     status = childService.insert(childVoList);
@@ -34,7 +34,7 @@ public class ChildManagementController {
   }
 
   @ResponseBody
-  @RequestMapping(value = "/", method = RequestMethod.GET)
+  @RequestMapping(value = "", method = RequestMethod.GET)
   public ResponseEntity<Object> select(@ModelAttribute ChildVo childVo) {
 
     List<ChildVo> results = null;

@@ -58,7 +58,9 @@ public class GlobalExceptionHandler {
       status = Status.SQL_EXCEPTION;
       httpStatus = HttpStatus.ALREADY_REPORTED;
       
-    }  
+    } else if (exception instanceof CustomException) {
+//타입갖고와서 처리        
+      }  
     else {
       status = Status.UNKNOWN_EXCEPTION;
       httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;

@@ -27,7 +27,7 @@ public class ZoneManagementController {
 	    @ApiImplicitParam(name = "id", value = "놀이구역ID입력하면 특정 놀이구역 / 입력하지 않으면 전체 놀이구역", required = false,dataType = "string", paramType = "query")
 	  })
 	@ResponseBody
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<Object> select(@ModelAttribute ZoneVo zoneVo) {
 			List<ZoneVo> results = zoneService.selectList(zoneVo);
 			return ResponseEntity.ok(JSONResult.success(results));
