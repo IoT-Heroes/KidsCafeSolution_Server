@@ -28,7 +28,7 @@ public class DataController {
 	ResponseHandler responseHandler = new ResponseHandler();
 
 	@ResponseBody
-	@RequestMapping(value = "/food/select", method = RequestMethod.GET)
+	@RequestMapping(value = "/food", method = RequestMethod.GET)
 	public ResponseEntity<Object> select() {
 
 		List<FoodVo> results = dataService.selectFoodList();

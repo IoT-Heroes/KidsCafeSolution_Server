@@ -33,7 +33,7 @@ public class UserManagementController {
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "userVo", value = "json형태로 id,password,name,phoneNumber 세팅", required = true, dataType = "string", paramType = "body") })
 	@ResponseBody
-	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public ResponseEntity<Object> insert(@RequestBody UserVo userVo) {
 
 		Status status = userService.insert(userVo);
@@ -57,7 +57,7 @@ public class UserManagementController {
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "string", paramType = "query"), })
 	@ResponseBody
-	@RequestMapping(value = "/select", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ResponseEntity<Object> select(@ModelAttribute UserVo userVo) {
 		List<UserVo> results = userService.selectList(userVo);
 		return responseHandler.success(results, Status.SELECT_SUCCESS);

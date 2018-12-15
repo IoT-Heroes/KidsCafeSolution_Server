@@ -32,7 +32,7 @@ public class StatisticsController {
   @ApiImplicitParams({@ApiImplicitParam(name = "zoneId", value = "놀이구역ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
       @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
-  @RequestMapping(value = "/airstate/select", method = RequestMethod.GET)
+  @RequestMapping(value = "/airstate", method = RequestMethod.GET)
   public ResponseEntity<Object> selectAirstate(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectAirstate(statisticsVo);
@@ -42,7 +42,7 @@ public class StatisticsController {
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
       @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
-  @RequestMapping(value = "/childactivity/select", method = RequestMethod.GET)
+  @RequestMapping(value = "/childactivity", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildActivity(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectChildActivity(statisticsVo);
@@ -52,7 +52,7 @@ public class StatisticsController {
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
       @ApiImplicitParam(name = "batchType", value = "M or H중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
-  @RequestMapping(value = "/childpulse/select", method = RequestMethod.GET)
+  @RequestMapping(value = "/childpulse", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildPulse(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectChildPulse(statisticsVo);
@@ -61,7 +61,7 @@ public class StatisticsController {
 
   @ApiImplicitParams({@ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
-  @RequestMapping(value = "/income/select", method = RequestMethod.GET)
+  @RequestMapping(value = "/income", method = RequestMethod.GET)
   public ResponseEntity<Object> selectIncome(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectIncome(statisticsVo);
@@ -71,7 +71,7 @@ public class StatisticsController {
   @ApiImplicitParams({@ApiImplicitParam(name = "age", value = "연령대", required = true, dataType = "int", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
       @ApiImplicitParam(name = "batchType", value = "M or H중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
-  @RequestMapping(value = "/usingfrequency/select", method = RequestMethod.GET)
+  @RequestMapping(value = "/usingfrequency", method = RequestMethod.GET)
   public ResponseEntity<Object> selectUsingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectUsingFrequency(statisticsVo);
@@ -81,7 +81,7 @@ public class StatisticsController {
   // 특정자녀가 존방문횟수(visiting record 기반)
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"),})
   @ResponseBody
-  @RequestMapping(value = "/childusingfrequency/select", method = RequestMethod.GET)
+  @RequestMapping(value = "/childusingfrequency", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildusingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
       List<StatisticsVo> results = statisticsService.childusingfrequency(statisticsVo);
       return responseHandler.success(results, Status.SELECT_SUCCESS);
@@ -96,7 +96,7 @@ public class StatisticsController {
    */
   @ApiImplicitParams({@ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
-  @RequestMapping(value = "/zonefrequency/select", method = RequestMethod.GET)
+  @RequestMapping(value = "/zonefrequency", method = RequestMethod.GET)
   public ResponseEntity<Object> selectZonefrequency(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectZonefrequency(statisticsVo);
@@ -112,7 +112,7 @@ public class StatisticsController {
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "childId", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
       @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
-  @RequestMapping(value = "/zonefrequencybyage/select", method = RequestMethod.GET)
+  @RequestMapping(value = "/zonefrequencybyage", method = RequestMethod.GET)
   public ResponseEntity<Object> zonefrequencybyage(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectZonefrequencybyage(statisticsVo);

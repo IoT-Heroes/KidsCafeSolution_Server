@@ -130,11 +130,9 @@ public class IoTMakersService {
 
     } else {
       return STATUS_CODE.UNKNOWN_DEVICE_ID;
-
     }
     return STATUS_CODE.SUCCESS;
   }
-
 
   public IoTMakersDataVo getIotMakersData(String url) throws JsonProcessingException, IOException {
 
@@ -142,7 +140,6 @@ public class IoTMakersService {
     header.add(HttpHeaders.AUTHORIZATION, Data.IOT_MAKERS_TOKEN);
 
     ResponseEntity<String> response = new RestTemplate().exchange(url, HttpMethod.GET, new HttpEntity(header), String.class);
-
     return parsingData(response.getBody());
   }
 
