@@ -19,7 +19,7 @@ import com.heroes.repository.ZoneDao;
 import com.heroes.vo.IoTMakersDataVo;
 import com.heroes.vo.StatisticsVo;
 import com.heroes.vo.ZoneVo;
-import api.COMMONDATA;
+import api.Data;
 import api.STATUS_CODE;
 
 @Service("IoTMakersService")
@@ -40,7 +40,7 @@ public class IoTMakersService {
 
     for (ZoneVo zoneDevice : zoneDeviceList) {
 
-      if (executeBatch(zoneDevice.getDeviceId(), COMMONDATA.BATCH_TYPE_HOUR) != STATUS_CODE.SUCCESS) {
+      if (executeBatch(zoneDevice.getDeviceId(), Data.BATCH_TYPE_HOUR) != STATUS_CODE.SUCCESS) {
         return STATUS_CODE.BATCH_ERROR;
       }
     }
@@ -66,9 +66,9 @@ public class IoTMakersService {
     cal.setTime(date);
 
 
-    if (type.equals(COMMONDATA.BATCH_TYPE_MINUTE)) {
+    if (type.equals(Data.BATCH_TYPE_MINUTE)) {
       cal.add(Calendar.MINUTE, -1);
-    } else if (type.equals(COMMONDATA.BATCH_TYPE_HOUR)) {
+    } else if (type.equals(Data.BATCH_TYPE_HOUR)) {
       cal.add(Calendar.HOUR, -1);
     } else {
     }
@@ -86,24 +86,24 @@ public class IoTMakersService {
     Timestamp toTimestamp = new Timestamp(now.getTime());
 
     int second = 0;
-    if (batchType.equals(COMMONDATA.BATCH_TYPE_MINUTE)) {
+    if (batchType.equals(Data.BATCH_TYPE_MINUTE)) {
       second = 60;
-    } else if (batchType.equals(COMMONDATA.BATCH_TYPE_HOUR)) {
+    } else if (batchType.equals(Data.BATCH_TYPE_HOUR)) {
       second = 3600;
     }
 
     String targetURL;
     IoTMakersDataVo ioTMakersDataVo = null;
 
-    targetURL = COMMONDATA.IOT_MAKERS_URL + deviceId + "/log?period=9999&from=" + fromTimestamp.getTime() + "&to=" + toTimestamp.getTime() + "&count=";
-    if (deviceId.contains(COMMONDATA.BAND_DEVICE_NAMING_RULE)) {
+    targetURL = Data.IOT_MAKERS_URL + deviceId + "/log?period=9999&from=" + fromTimestamp.getTime() + "&to=" + toTimestamp.getTime() + "&count=";
+    if (deviceId.contains(Data.BAND_DEVICE_NAMING_RULE)) {
 
 
-    } else if (deviceId.contains(COMMONDATA.ZONE_DEVICE_NAMING_RULE)) {
+    } else if (deviceId.contains(Data.ZONE_DEVICE_NAMING_RULE)) {
       // zone device 일 때
       int requestDataCounter;
 
-      requestDataCounter = (second / COMMONDATA.ZONE_SENSOR_DELAY_TIME) * COMMONDATA.NUM_OF_ZONE_DEVICE_SENSOR;
+      requestDataCounter = (second / Data.ZONE_SENSOR_DELAY_TIME) * Data.NUM_OF_ZONE_DEVICE_SENSOR;
       targetURL += requestDataCounter;
 
       try {
@@ -139,7 +139,7 @@ public class IoTMakersService {
   public IoTMakersDataVo getIotMakersData(String url) throws JsonProcessingException, IOException {
 
     HttpHeaders header = new HttpHeaders();
-    header.add(HttpHeaders.AUTHORIZATION, COMMONDATA.IOT_MAKERS_TOKEN);
+    header.add(HttpHeaders.AUTHORIZATION, Data.IOT_MAKERS_TOKEN);
 
     ResponseEntity<String> response = new RestTemplate().exchange(url, HttpMethod.GET, new HttpEntity(header), String.class);
 

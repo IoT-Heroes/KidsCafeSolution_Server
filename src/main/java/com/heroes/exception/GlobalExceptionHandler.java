@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import api.ResponseHelper;
+import api.ResponseHandler;
 import api.Status;
 
 @ControllerAdvice
@@ -66,8 +66,8 @@ public class GlobalExceptionHandler {
     }
     
     
-      ResponseHelper responseHelper = new ResponseHelper();
-      return responseHelper.fail(exception,httpStatus,status);
+      ResponseHandler responseHandler = new ResponseHandler();
+      return responseHandler.fail(exception,httpStatus,status);
       
       
       

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.heroes.exception.CustomException;
 import com.heroes.repository.CafeVisitingRecordDao;
 import com.heroes.vo.CafeVisitingRecordVo;
-import api.COMMONDATA;
+import api.Data;
 import api.Status;
 
 @Service("CafeVisitingRecordService")
@@ -36,7 +36,7 @@ public class CafeVisitingRecordService extends JobBuilder {
     Date expire;
     Calendar cal = Calendar.getInstance();
     cal.setTime(now);
-    cal.add(Calendar.HOUR, +COMMONDATA.DEFAULT_USING_TIME);
+    cal.add(Calendar.HOUR, +Data.DEFAULT_USING_TIME);
     expire = cal.getTime();
 
     Timestamp fromTimestamp = new Timestamp(now.getTime());
@@ -60,7 +60,7 @@ public class CafeVisitingRecordService extends JobBuilder {
 
 
     if (!cafeVisitingRecordDao.insert(cafeVisitingRecordVo)) {
-      return Status.INSERT_SUCCESS;
+      return Status.INSERT_FAIL;
     }
 
     if (!cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo)) {
@@ -68,7 +68,6 @@ public class CafeVisitingRecordService extends JobBuilder {
     }
 
     batchService.registBatch(uuid.toString(), expression, this, "update", param);
-
     return Status.INSERT_SUCCESS;
   }
 
@@ -84,8 +83,7 @@ public class CafeVisitingRecordService extends JobBuilder {
     if (!cafeVisitingRecordDao.updateCafeVisitingRecord(cafeVisitingRecordVo))
       return Status.UPDATE_FAIL;
 
-
-    return Status.UPDATE_FAIL;
+    return Status.UPDATE_SUCCESS;
   }
 
 }

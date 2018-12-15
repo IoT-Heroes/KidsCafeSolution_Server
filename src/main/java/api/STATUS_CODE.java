@@ -17,4 +17,6 @@ public class STATUS_CODE {
   
   public static final int BATCH_TYPE_EXCEPTION = 4001;
 
+  
+  
 }

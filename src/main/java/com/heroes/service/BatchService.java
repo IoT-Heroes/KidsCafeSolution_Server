@@ -15,39 +15,39 @@ import org.springframework.web.context.WebApplicationContext;
 @Service
 public class BatchService {
 
-  /**
-   * @param jobName
-   * @param expression 배치 스케줄링 표현식
-   * @return
-   */
-  public int registBatch(String jobName, String expression, Object targetInst, String targetMethond, Object[] arguments) throws Exception {
+	/**
+	 * @param jobName
+	 * @param expression
+	 *            배치 스케줄링 표현식
+	 * @return
+	 */
+	public int registBatch(String jobName, String expression, Object targetInst, String targetMethond,
+			Object[] arguments) throws Exception {
 
+		// get the quartzFactory bean
+		WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
 
-    // get the quartzFactory bean
-    WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
+		Scheduler scheduler = (Scheduler) context.getBean("JobScheduler");
 
-    Scheduler scheduler = (Scheduler) context.getBean("JobScheduler");;
+		// create JOB
+		MethodInvokingJobDetailFactoryBean jobDetail = new MethodInvokingJobDetailFactoryBean();
+		jobDetail.setTargetObject(targetInst);
+		jobDetail.setTargetMethod(targetMethond);
+		jobDetail.setArguments(arguments);
+		jobDetail.setName(jobName);
+		jobDetail.setConcurrent(false);
+		jobDetail.afterPropertiesSet();
 
-    // create JOB
-      MethodInvokingJobDetailFactoryBean jobDetail = new MethodInvokingJobDetailFactoryBean();
-      jobDetail.setTargetObject(targetInst);
-      jobDetail.setTargetMethod(targetMethond);
-      jobDetail.setArguments(arguments);
-      jobDetail.setName(jobName);
-      jobDetail.setConcurrent(false);
-      jobDetail.afterPropertiesSet();
+		// create CRON Trigger
+		CronTriggerFactoryBean cronTrigger = new CronTriggerFactoryBean();
+		UUID uuid = UUID.randomUUID();
+		cronTrigger.setBeanName(uuid.toString());
 
+		cronTrigger.setCronExpression(expression);
+		cronTrigger.afterPropertiesSet();
 
-      // create CRON Trigger
-      CronTriggerFactoryBean cronTrigger = new CronTriggerFactoryBean();
-      UUID uuid = UUID.randomUUID();
-      cronTrigger.setBeanName(uuid.toString());
+		scheduler.scheduleJob(jobDetail.getObject(), cronTrigger.getObject());
+		return 0;
 
-      cronTrigger.setCronExpression(expression);
-      cronTrigger.afterPropertiesSet();
-
-      scheduler.scheduleJob(jobDetail.getObject(), cronTrigger.getObject());
-    return 0;
-
-  }
+	}
 }

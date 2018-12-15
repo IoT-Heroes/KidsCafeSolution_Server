@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.heroes.dto.JSONResult;
 import com.heroes.service.ChildService;
 import com.heroes.vo.ChildVo;
-import api.ResponseHelper;
+import api.ResponseHandler;
 import api.Status;
 
 @CrossOrigin(origins = "*")
@@ -23,14 +23,14 @@ public class ChildManagementController {
 
   @Autowired
   private ChildService childService;
-  ResponseHelper responseHelper = new ResponseHelper();
+  ResponseHandler responseHandler = new ResponseHandler();
 
   @ResponseBody
   @RequestMapping(value = "/insert", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody List<ChildVo> childVoList) {
     Status status;
     status = childService.insert(childVoList);
-    return responseHelper.sendResponse(childVoList, status);
+    return responseHandler.sendResponse(childVoList, status);
   }
 
   @ResponseBody
@@ -39,6 +39,6 @@ public class ChildManagementController {
 
     List<ChildVo> results = null;
     results = childService.selectList(childVo);
-    return responseHelper.success(results, Status.SUCCESS);
+    return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
 }

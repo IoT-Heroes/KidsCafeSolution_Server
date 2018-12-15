@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.heroes.dto.JSONResult;
 import com.heroes.service.StatisticsService;
 import com.heroes.vo.StatisticsVo;
-import api.ResponseHelper;
+import api.ResponseHandler;
 import api.Status;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -27,7 +27,7 @@ public class StatisticsController {
 
   @Autowired
   private StatisticsService statisticsService;
-  ResponseHelper responseHelper = new ResponseHelper();
+  ResponseHandler responseHandler = new ResponseHandler();
 
   @ApiImplicitParams({@ApiImplicitParam(name = "zoneId", value = "놀이구역ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
       @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
@@ -36,7 +36,7 @@ public class StatisticsController {
   public ResponseEntity<Object> selectAirstate(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectAirstate(statisticsVo);
-      return responseHelper.success(results, Status.SELECT_SUCCESS);
+      return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
@@ -46,7 +46,7 @@ public class StatisticsController {
   public ResponseEntity<Object> selectChildActivity(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectChildActivity(statisticsVo);
-      return responseHelper.success(results, Status.SELECT_SUCCESS);
+      return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "childId", value = "자녀ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
@@ -56,7 +56,7 @@ public class StatisticsController {
   public ResponseEntity<Object> selectChildPulse(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectChildPulse(statisticsVo);
-      return responseHelper.success(results, Status.SELECT_SUCCESS);
+      return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
@@ -65,7 +65,7 @@ public class StatisticsController {
   public ResponseEntity<Object> selectIncome(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectIncome(statisticsVo);
-      return responseHelper.success(results, Status.SELECT_SUCCESS);
+      return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
 
   @ApiImplicitParams({@ApiImplicitParam(name = "age", value = "연령대", required = true, dataType = "int", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
@@ -75,7 +75,7 @@ public class StatisticsController {
   public ResponseEntity<Object> selectUsingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectUsingFrequency(statisticsVo);
-      return responseHelper.success(results, Status.SELECT_SUCCESS);
+      return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
 
   // 특정자녀가 존방문횟수(visiting record 기반)
@@ -84,7 +84,7 @@ public class StatisticsController {
   @RequestMapping(value = "/childusingfrequency/select", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildusingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
       List<StatisticsVo> results = statisticsService.childusingfrequency(statisticsVo);
-      return responseHelper.success(results, Status.SELECT_SUCCESS);
+      return responseHandler.success(results, Status.SELECT_SUCCESS);
 
   }
 
@@ -100,7 +100,7 @@ public class StatisticsController {
   public ResponseEntity<Object> selectZonefrequency(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectZonefrequency(statisticsVo);
-      return ResponseEntity.ok(JSONResult.success(results));
+      return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
 
   /**
@@ -116,7 +116,7 @@ public class StatisticsController {
   public ResponseEntity<Object> zonefrequencybyage(@ModelAttribute StatisticsVo statisticsVo) {
 
       List<StatisticsVo> results = statisticsService.selectZonefrequencybyage(statisticsVo);
-      return ResponseEntity.ok(JSONResult.success(results));
+      return responseHandler.success(results, Status.SELECT_SUCCESS);
     }
 
 
