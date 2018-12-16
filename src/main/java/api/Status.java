@@ -44,16 +44,16 @@ public enum Status {
   
   
   
-  private final int codeName;
+  private final int code;
   private final String detail;
 
   private Status(int code, String detailStr) {
-    this.codeName = code;
+    this.code = code;
     this.detail = detailStr;
   }
 
   public int getCode() {
-    return codeName;
+    return code;
   }
   
   public String getDetail() {

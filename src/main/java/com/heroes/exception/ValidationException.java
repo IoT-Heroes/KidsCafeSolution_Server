@@ -1,30 +1,25 @@
 package com.heroes.exception;
 
-import api.Status;
+import api.ValidationStatus;
 
 public class ValidationException extends RuntimeException {
 	Exception exception;
-	private final Status status;
+	Object obj;
+	private final ValidationStatus status;
 
-	public ValidationException(Status status, String message) {
-		super("Exception occurs : " + message);
-
-		this.status = status;
-	}
-	
-	public ValidationException(Status status) {
+	public ValidationException(ValidationStatus status, Object obj) {
 		super("Validation Exception occurs : " + status.getDetail());
-
+		this.obj = obj;
 		this.status = status;
 	}
 
-
-	public ValidationException(Exception exception) {
-		this.exception = exception;
-		this.status = Status.UNKNOWN_EXCEPTION;
-	}
-
-	public Status getStatus() {
+	public ValidationStatus getStatus() {
 		return status;
 	}
+
+	public Object getObj() {
+		return obj;
+	}
+
+
 }

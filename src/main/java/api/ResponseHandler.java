@@ -20,8 +20,8 @@ public class ResponseHandler {
 		return ResponseEntity.ok(JSONResult.success(obj, status.getDetail(), status.getCode()));
 	}
 	
-	public ResponseEntity<Object> success(Status status) {
-		return ResponseEntity.ok(JSONResult.success(status.getDetail(), status.getCode()));
+	public ResponseEntity<Object> success(ValidationStatus status,Object obj) {
+		return ResponseEntity.ok(JSONResult.success(obj,status.getDetail(), status.getCode()));
 	}
 
 

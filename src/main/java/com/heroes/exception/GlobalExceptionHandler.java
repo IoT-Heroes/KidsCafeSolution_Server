@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import api.ResponseHandler;
 import api.Status;
+import api.ValidationStatus;
 
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -60,9 +61,9 @@ public class GlobalExceptionHandler {
 			httpStatus = HttpStatus.ALREADY_REPORTED;
 
 		} else if (exception instanceof ValidationException) {
-			// 타입갖고와서 처리
-			status = ((ValidationException) exception).getStatus();
-			return responseHandler.success(status);
+			ValidationStatus validationStatus = ((ValidationException) exception).getStatus();
+			return responseHandler.success(validationStatus, ((ValidationException) exception).getObj());
+		
 		} else {
 			status = Status.UNKNOWN_EXCEPTION;
 			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
