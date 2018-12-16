@@ -6,6 +6,7 @@ import com.heroes.exception.ValidationException;
 import com.heroes.vo.CafeVisitingRecordVo;
 import com.heroes.vo.ChildVo;
 import com.heroes.vo.StatisticsVo;
+import com.heroes.vo.UserVo;
 
 public class Validator {
 
@@ -25,6 +26,10 @@ public class Validator {
 			status = batchHDTypeValidation(obj);
 		} else if (type == ValidationStatus.BATCH_MHTYPE_VALITATION) {
 			status = batchMHTypeValidation(obj);
+		} else if (type == ValidationStatus.LOGIN_VALIDATION) {
+			status = loginValidation(obj);
+		} else if (type == ValidationStatus.JOIN_VALIDATION) {
+			status = joinValidation(obj);
 		}
 
 		if (status != ValidationStatus.SUCCESS) {
@@ -70,7 +75,8 @@ public class Validator {
 
 	public ValidationStatus batchHDTypeValidation(Object obj) {
 		StatisticsVo statisticsVo = (StatisticsVo) obj;
-		if(statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR) || statisticsVo.getBatchType().equals(Data.BATCH_TYPE_DAY)) {
+		if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)
+				|| statisticsVo.getBatchType().equals(Data.BATCH_TYPE_DAY)) {
 			return ValidationStatus.SUCCESS;
 		}
 		return ValidationStatus.BATCH_TYPE_ERROR;
@@ -78,10 +84,33 @@ public class Validator {
 
 	public ValidationStatus batchMHTypeValidation(Object obj) {
 		StatisticsVo statisticsVo = (StatisticsVo) obj;
-		if(statisticsVo.getBatchType().equals(Data.BATCH_TYPE_MINUTE) || statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
+		if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_MINUTE)
+				|| statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
 			return ValidationStatus.SUCCESS;
-		}		
+		}
+
+		return ValidationStatus.SUCCESS;
+	}
+	
+
+	public ValidationStatus loginValidation(Object obj) {
+		UserVo userVo = (UserVo)obj;
 		
+		if (userVo.getId() == null
+				|| userVo.getPassword() == null) {
+			return ValidationStatus.PARAM_ERROR;
+		}
+		return ValidationStatus.SUCCESS;
+	}
+	public ValidationStatus joinValidation(Object obj) {
+		UserVo userVo = (UserVo)obj;
+		
+		if (userVo.getId() == null
+				|| userVo.getPassword() == null
+				|| userVo.getName() == null
+				|| userVo.getPhoneNumber() == null) {
+			return ValidationStatus.PARAM_ERROR;
+		}
 		return ValidationStatus.SUCCESS;
 	}
 }

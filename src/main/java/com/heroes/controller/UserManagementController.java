@@ -18,6 +18,8 @@ import com.heroes.vo.UserVo;
 
 import api.ResponseHandler;
 import api.Status;
+import api.ValidationStatus;
+import api.Validator;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 
@@ -30,12 +32,15 @@ public class UserManagementController {
 	private UserService userService;
 	ResponseHandler responseHandler = new ResponseHandler();
 
+	Validator validator = new Validator();
+	
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "userVo", value = "json형태로 id,password,name,phoneNumber 세팅", required = true, dataType = "string", paramType = "body") })
 	@ResponseBody
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<Object> insert(@RequestBody UserVo userVo) {
 
+		validator.validate(userVo,ValidationStatus.JOIN_VALIDATION);
 		Status status = userService.insert(userVo);
 		return responseHandler.sendResponse(userVo, status);
 	}
@@ -46,6 +51,7 @@ public class UserManagementController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 
 	public ResponseEntity<Object> login(@RequestBody UserVo userVo) {
+		validator.validate(userVo,ValidationStatus.LOGIN_VALIDATION);
 		UserVo resultUserVo = userService.login(userVo);
 		if (resultUserVo != null) {
 			return responseHandler.sendResponse(resultUserVo, Status.LOGIN_SUCCESS);
