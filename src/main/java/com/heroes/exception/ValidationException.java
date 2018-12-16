@@ -2,17 +2,24 @@ package com.heroes.exception;
 
 import api.Status;
 
-public class CustomException extends RuntimeException {
+public class ValidationException extends RuntimeException {
 	Exception exception;
 	private final Status status;
 
-	public CustomException(Status status, String message) {
+	public ValidationException(Status status, String message) {
 		super("Exception occurs : " + message);
 
 		this.status = status;
 	}
+	
+	public ValidationException(Status status) {
+		super("Validation Exception occurs : " + status.getDetail());
 
-	public CustomException(Exception exception) {
+		this.status = status;
+	}
+
+
+	public ValidationException(Exception exception) {
 		this.exception = exception;
 		this.status = Status.UNKNOWN_EXCEPTION;
 	}

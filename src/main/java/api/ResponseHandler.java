@@ -19,6 +19,11 @@ public class ResponseHandler {
 	public ResponseEntity<Object> success(Object obj, Status status) {
 		return ResponseEntity.ok(JSONResult.success(obj, status.getDetail(), status.getCode()));
 	}
+	
+	public ResponseEntity<Object> success(Status status) {
+		return ResponseEntity.ok(JSONResult.success(status.getDetail(), status.getCode()));
+	}
+
 
 	public ResponseEntity<Object> fail(Object obj, Status status) {
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST)

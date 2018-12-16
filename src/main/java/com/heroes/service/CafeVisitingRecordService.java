@@ -11,7 +11,6 @@ import org.quartz.JobBuilder;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.heroes.exception.CustomException;
 import com.heroes.repository.CafeVisitingRecordDao;
 import com.heroes.vo.CafeVisitingRecordVo;
 import api.Data;

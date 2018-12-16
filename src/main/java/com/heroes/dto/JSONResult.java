@@ -52,6 +52,10 @@ public class JSONResult {
 		return new JSONResult("success", message, data);
 	}
 
+	public static JSONResult success(String message, int state) {
+		return new JSONResult("success", message, "", state);
+	}
+
 	public static JSONResult fail(Object data, String message) {
 		return new JSONResult("fail", message, data);
 	}

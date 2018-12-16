@@ -37,6 +37,9 @@ public enum Status {
   
   ,ALREADY_RENT_DEVICE(4000,"ALREADY_RENT_DEVICE")
   
+  
+  
+  ,EMPTY_LIST(5000,"EMPTY_LIST")
   ;
   
   

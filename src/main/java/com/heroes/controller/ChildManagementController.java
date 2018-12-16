@@ -1,6 +1,7 @@
 package com.heroes.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -10,9 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.heroes.dto.JSONResult;
+
+import com.heroes.exception.ValidationException;
 import com.heroes.service.ChildService;
 import com.heroes.vo.ChildVo;
+
 import api.ResponseHandler;
 import api.Status;
 
@@ -29,6 +32,11 @@ public class ChildManagementController {
   @RequestMapping(value = "", method = RequestMethod.POST)
   public ResponseEntity<Object> insert(@RequestBody List<ChildVo> childVoList) {
     Status status;
+    
+    if(childVoList.size() == 0) {
+    	throw new ValidationException(Status.EMPTY_LIST);
+    }
+    
     status = childService.insert(childVoList);
     return responseHandler.sendResponse(childVoList, status);
   }
