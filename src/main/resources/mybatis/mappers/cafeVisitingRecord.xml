@@ -34,6 +34,12 @@
 	  		AND to_char(END_DATE, 'YYYY-MM-DD HH24:MI') = to_char(now()::timestamp, 'YYYY-MM-DD HH24:MI')
 		  	]]>
 		</if>
+			<if test="bandDeviceId != '' and bandDeviceId != null">
+		  <![CDATA[	
+	  		AND BAND_DEVICE_ID = #{bandDeviceId}
+		  	]]>
+		</if>	
+		
 		ORDER BY STARTDATE DESC
 	</select>
 

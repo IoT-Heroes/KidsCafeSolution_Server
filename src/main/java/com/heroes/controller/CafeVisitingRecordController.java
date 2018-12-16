@@ -47,7 +47,7 @@ public class CafeVisitingRecordController {
 	}
 
 	@ApiImplicitParams({
-			@ApiImplicitParam(name = "childId", value = "자녀 ID", required = true, dataType = "string", paramType = "query") })
+			@ApiImplicitParam(name = "childId", value = "자녀 ID(선택)", required = false, dataType = "string", paramType = "query"),@ApiImplicitParam(name = "bandDeviceId", value = "밴드 ID(선택)", required = false, dataType = "string", paramType = "query") })
 	@ResponseBody
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ResponseEntity<Object> select(@ModelAttribute CafeVisitingRecordVo cafeVisitingRecordVo) throws Exception {

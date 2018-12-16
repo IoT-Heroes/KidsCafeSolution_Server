@@ -16,6 +16,8 @@ import com.heroes.vo.StatisticsVo;
 
 import api.ResponseHandler;
 import api.Status;
+import api.ValidationStatus;
+import api.Validator;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 
@@ -27,13 +29,15 @@ public class StatisticsController {
   @Autowired
   private StatisticsService statisticsService;
   ResponseHandler responseHandler = new ResponseHandler();
+  
+  Validator validator = new Validator();
 
   @ApiImplicitParams({@ApiImplicitParam(name = "zoneId", value = "놀이구역ID", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "startDate", value = "2018-12-05 10:10:10 형태", required = true, dataType = "string", paramType = "query"), @ApiImplicitParam(name = "endDate", value = "2018-12-05 10:10:18 형태", required = true, dataType = "string", paramType = "query"),
       @ApiImplicitParam(name = "batchType", value = "H or D중 선택", required = true, dataType = "string", paramType = "query")})
   @ResponseBody
   @RequestMapping(value = "/airstate", method = RequestMethod.GET)
   public ResponseEntity<Object> selectAirstate(@ModelAttribute StatisticsVo statisticsVo) {
-
+	  validator.validate(statisticsVo, ValidationStatus.BATCH_HDTYPE_VALITATION);
       List<StatisticsVo> results = statisticsService.selectAirstate(statisticsVo);
       return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
@@ -43,7 +47,7 @@ public class StatisticsController {
   @ResponseBody
   @RequestMapping(value = "/childactivity", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildActivity(@ModelAttribute StatisticsVo statisticsVo) {
-
+	  validator.validate(statisticsVo, ValidationStatus.BATCH_HDTYPE_VALITATION);
       List<StatisticsVo> results = statisticsService.selectChildActivity(statisticsVo);
       return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
@@ -53,7 +57,7 @@ public class StatisticsController {
   @ResponseBody
   @RequestMapping(value = "/childpulse", method = RequestMethod.GET)
   public ResponseEntity<Object> selectChildPulse(@ModelAttribute StatisticsVo statisticsVo) {
-
+	  validator.validate(statisticsVo, ValidationStatus.BATCH_MHTYPE_VALITATION);
       List<StatisticsVo> results = statisticsService.selectChildPulse(statisticsVo);
       return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
@@ -62,7 +66,7 @@ public class StatisticsController {
   @ResponseBody
   @RequestMapping(value = "/income", method = RequestMethod.GET)
   public ResponseEntity<Object> selectIncome(@ModelAttribute StatisticsVo statisticsVo) {
-
+	  validator.validate(statisticsVo, ValidationStatus.BATCH_HDTYPE_VALITATION);
       List<StatisticsVo> results = statisticsService.selectIncome(statisticsVo);
       return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
@@ -72,7 +76,7 @@ public class StatisticsController {
   @ResponseBody
   @RequestMapping(value = "/usingfrequency", method = RequestMethod.GET)
   public ResponseEntity<Object> selectUsingfrequency(@ModelAttribute StatisticsVo statisticsVo) {
-
+	  validator.validate(statisticsVo, ValidationStatus.BATCH_HDTYPE_VALITATION);
       List<StatisticsVo> results = statisticsService.selectUsingFrequency(statisticsVo);
       return responseHandler.success(results, Status.SELECT_SUCCESS);
   }
@@ -97,7 +101,7 @@ public class StatisticsController {
   @ResponseBody
   @RequestMapping(value = "/zonefrequency", method = RequestMethod.GET)
   public ResponseEntity<Object> selectZonefrequency(@ModelAttribute StatisticsVo statisticsVo) {
-
+	  validator.validate(statisticsVo, ValidationStatus.BATCH_HDTYPE_VALITATION);
       List<StatisticsVo> results = statisticsService.selectZonefrequency(statisticsVo);
       return responseHandler.success(results, Status.SELECT_SUCCESS);
   }

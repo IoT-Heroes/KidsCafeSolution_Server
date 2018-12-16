@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.heroes.exception.ValidationException;
 import com.heroes.repository.StatisticsDao;
 import com.heroes.vo.StatisticsVo;
+
+import api.Data;
 import api.ValidationStatus;
 
 @Service
@@ -19,86 +21,68 @@ public class StatisticsService {
   
   public List<StatisticsVo> selectAirstate(StatisticsVo statisticsVo) {
 
-    if (statisticsVo.getBatchType().equals("H")) {
+    if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
       return statisticsDao.selectAirStateHourList(statisticsVo);
-    } else if (statisticsVo.getBatchType().equals("D")) {
-      return statisticsDao.selectAirStateDayList(statisticsVo);
     } else {
-      throw new ValidationException(ValidationStatus.BATCH_TYPE_EXCEPTION,statisticsVo);
-    }
+      return statisticsDao.selectAirStateDayList(statisticsVo);
+    } 
   }
 
   public List<StatisticsVo> selectChildActivity(StatisticsVo statisticsVo) {
 
-    if (statisticsVo.getBatchType().equals("H")) {
+    if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
       return statisticsDao.selectChildActivityHourList(statisticsVo);
-    } else if (statisticsVo.getBatchType().equals("D")) {
-      return statisticsDao.selectChildActivityDayList(statisticsVo);
     } else {
-        throw new ValidationException(ValidationStatus.BATCH_TYPE_EXCEPTION,statisticsVo);
+      return statisticsDao.selectChildActivityDayList(statisticsVo);
     }
   }
 
   public List<StatisticsVo> selectChildPulse(StatisticsVo statisticsVo) {
 
-    if (statisticsVo.getBatchType().equals("M")) {
+    if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_MINUTE)) {
       return statisticsDao.selectChildPulseMinuteList(statisticsVo);
-    } else if (statisticsVo.getBatchType().equals("H")) {
-      return statisticsDao.selectChildPulseDayList(statisticsVo);
-
     } else {
-        throw new ValidationException(ValidationStatus.BATCH_TYPE_EXCEPTION,statisticsVo);
+      return statisticsDao.selectChildPulseDayList(statisticsVo);
     }
   }
 
   public List<StatisticsVo> selectIncome(StatisticsVo statisticsVo) {
 
-    if (statisticsVo.getBatchType().equals("H")) {
+    if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
       return statisticsDao.selectIncomeHourList(statisticsVo);
-    } else if (statisticsVo.getBatchType().equals("D")) {
-      return statisticsDao.selectIncomeDayList(statisticsVo);
     } else {
-        throw new ValidationException(ValidationStatus.BATCH_TYPE_EXCEPTION,statisticsVo);
+      return statisticsDao.selectIncomeDayList(statisticsVo);
     }
   }
 
   public List<StatisticsVo> selectUsingFrequency(StatisticsVo statisticsVo) {
 
-    if (statisticsVo.getBatchType().equals("H")) {
+    if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
       return statisticsDao.selectUsingFrequencyHourList(statisticsVo);
-    } else if (statisticsVo.getBatchType().equals("D")) {
-      return statisticsDao.selectUsingFrequencyDayList(statisticsVo);
-
     } else {
-        throw new ValidationException(ValidationStatus.BATCH_TYPE_EXCEPTION,statisticsVo);
+      return statisticsDao.selectUsingFrequencyDayList(statisticsVo);
     }
   }
 
   public List<StatisticsVo> childusingfrequency(StatisticsVo statisticsVo) {
-
     return statisticsDao.childusingfrequency(statisticsVo);
   }
 
   public List<StatisticsVo> selectZonefrequency(StatisticsVo statisticsVo) {
 
-    if (statisticsVo.getBatchType().equals("H")) {
+    if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
       return statisticsDao.selectZonefrequencyHourList(statisticsVo);
-    } else if (statisticsVo.getBatchType().equals("D")) {
-      return statisticsDao.selectZonefrequencyDayList(statisticsVo);
-
     } else {
-        throw new ValidationException(ValidationStatus.BATCH_TYPE_EXCEPTION,statisticsVo);
+      return statisticsDao.selectZonefrequencyDayList(statisticsVo);
     }
   }
 
   public List<StatisticsVo> selectZonefrequencybyage(StatisticsVo statisticsVo) {
 
-    if (statisticsVo.getBatchType().equals("H")) {
+    if (statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
       return statisticsDao.selectZonefrequencybyageHourList(statisticsVo);
-    } else if (statisticsVo.getBatchType().equals("D")) {
-      return statisticsDao.selectZonefrequencybyageDayList(statisticsVo);
     } else {
-        throw new ValidationException(ValidationStatus.BATCH_TYPE_EXCEPTION,statisticsVo);
+      return statisticsDao.selectZonefrequencybyageDayList(statisticsVo);
     }
   }
 

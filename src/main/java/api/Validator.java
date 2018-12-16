@@ -5,6 +5,7 @@ import java.util.List;
 import com.heroes.exception.ValidationException;
 import com.heroes.vo.CafeVisitingRecordVo;
 import com.heroes.vo.ChildVo;
+import com.heroes.vo.StatisticsVo;
 
 public class Validator {
 
@@ -20,6 +21,10 @@ public class Validator {
 			status = cafeVisitingRecordInsertValidation(obj);
 		} else if (type == ValidationStatus.CAFE_VISITING_RECORD_SELECT_VALIDATION) {
 			status = cafeVisitingRecordSelectValidation(obj);
+		} else if (type == ValidationStatus.BATCH_HDTYPE_VALITATION) {
+			status = batchHDTypeValidation(obj);
+		} else if (type == ValidationStatus.BATCH_MHTYPE_VALITATION) {
+			status = batchMHTypeValidation(obj);
 		}
 
 		if (status != ValidationStatus.SUCCESS) {
@@ -57,9 +62,26 @@ public class Validator {
 
 	public ValidationStatus cafeVisitingRecordSelectValidation(Object obj) {
 		CafeVisitingRecordVo cafeVisitingRecordVo = (CafeVisitingRecordVo) obj;
-		if (cafeVisitingRecordVo.getChildId() == null) {
+		if (cafeVisitingRecordVo.getChildId() == null && cafeVisitingRecordVo.getBandDeviceId() == null) {
 			return ValidationStatus.PARAM_ERROR;
 		}
+		return ValidationStatus.SUCCESS;
+	}
+
+	public ValidationStatus batchHDTypeValidation(Object obj) {
+		StatisticsVo statisticsVo = (StatisticsVo) obj;
+		if(statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR) || statisticsVo.getBatchType().equals(Data.BATCH_TYPE_DAY)) {
+			return ValidationStatus.SUCCESS;
+		}
+		return ValidationStatus.BATCH_TYPE_ERROR;
+	}
+
+	public ValidationStatus batchMHTypeValidation(Object obj) {
+		StatisticsVo statisticsVo = (StatisticsVo) obj;
+		if(statisticsVo.getBatchType().equals(Data.BATCH_TYPE_MINUTE) || statisticsVo.getBatchType().equals(Data.BATCH_TYPE_HOUR)) {
+			return ValidationStatus.SUCCESS;
+		}		
+		
 		return ValidationStatus.SUCCESS;
 	}
 }
