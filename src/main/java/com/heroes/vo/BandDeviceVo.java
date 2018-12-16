@@ -3,7 +3,7 @@ package com.heroes.vo;
 public class BandDeviceVo {
 
 	private String id;
-	private String isRent;
+	private boolean isRent;
 	private String isCurrentLocation;
 	private String isBeforeLocation;
 
@@ -15,11 +15,11 @@ public class BandDeviceVo {
 		this.id = id;
 	}
 
-	public String getIsRent() {
+	public boolean getIsRent() {
 		return isRent;
 	}
 
-	public void setIsRent(String isRent) {
+	public void setIsRent(boolean isRent) {
 		this.isRent = isRent;
 	}
 

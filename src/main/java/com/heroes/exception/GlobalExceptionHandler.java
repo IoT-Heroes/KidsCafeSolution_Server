@@ -23,8 +23,8 @@ public class GlobalExceptionHandler {
   @ResponseBody
   public ResponseEntity<Object> handlerException(Exception exception) {
 
-    Status status;
-    HttpStatus httpStatus;
+    Status status = Status.UNKNOWN_EXCEPTION;
+    HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
     
     if (exception instanceof DataIntegrityViolationException) {
       status = Status.DATA_INTEGRITY_VIOLATION_EXCEPTION;

@@ -41,6 +41,10 @@ public class CafeVisitingRecordService extends JobBuilder {
 		cafeVisitingRecordVo.setEndDate(toTimestamp.toString());
 		cafeVisitingRecordVo.setUsingTime(2);
 
+		if (cafeVisitingRecordDao.isBandDeviceRent(cafeVisitingRecordVo)) {
+			return Status.ALREADY_RENT_DEVICE;
+		}
+		
 		if (!cafeVisitingRecordDao.insert(cafeVisitingRecordVo)) {
 			return Status.INSERT_FAIL;
 		}

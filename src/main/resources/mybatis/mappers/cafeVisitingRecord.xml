@@ -37,6 +37,12 @@
 		ORDER BY STARTDATE DESC
 	</select>
 
+	<select id="selectBandDevice" resultType="banddevicevo">
+		SELECT ID,IS_RENT ISRENT
+		FROM BAND_DEVICE
+		WHERE #{bandDeviceId} = ID
+	</select>
+
 	<update id="updateCafeVisitingRecord" parameterType="cafevisitingrecordvo">
 		<![CDATA[
 			UPDATE CAFE_VISITING_RECORD

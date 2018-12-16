@@ -9,7 +9,7 @@ public class ResponseHandler {
 	public ResponseEntity<Object> sendResponse(Object obj, Status status) {
 
 		if (status == Status.SUCCESS || status == Status.INSERT_SUCCESS || status == Status.UPDATE_SUCCESS
-				|| status == Status.LOGIN_FAIL || status == Status.LOGIN_SUCCESS) {
+				|| status == Status.LOGIN_FAIL || status == Status.LOGIN_SUCCESS || status == Status.ALREADY_RENT_DEVICE) {
 			return success(obj, status);
 		} else {
 			return fail(obj, status);
