@@ -65,5 +65,15 @@
 	</update>
 
 
+	<update id="updateIsBandWearing" parameterType="childvo">
+		<![CDATA[
+		
+		
+			UPDATE K_CHILD
+			SET IS_BAND_WEARING = NOT IS_BAND_WEARING
+			WHERE ID = #{childId }
+			
+		]]>
+	</update>
 
 </mapper>

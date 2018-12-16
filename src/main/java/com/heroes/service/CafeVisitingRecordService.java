@@ -51,6 +51,11 @@ public class CafeVisitingRecordService extends JobBuilder {
 		if (!cafeVisitingRecordDao.updateBandDevice(cafeVisitingRecordVo)) {
 			return Status.UPDATE_FAIL;
 		}
+		
+		if (!cafeVisitingRecordDao.updateIsBandWearing(cafeVisitingRecordVo)) {
+			return Status.UPDATE_FAIL;
+		}
+
 
 		return Status.INSERT_SUCCESS;
 	}
@@ -70,6 +75,10 @@ public class CafeVisitingRecordService extends JobBuilder {
 
 			if (!cafeVisitingRecordDao.updateCafeVisitingRecord(paramCafeVisitingRecordVo))
 				return Status.UPDATE_FAIL;
+			
+			if (!cafeVisitingRecordDao.updateIsBandWearing(cafeVisitingRecordVo)) 
+				return Status.UPDATE_FAIL;
+			
 		}
 
 		return Status.UPDATE_SUCCESS;

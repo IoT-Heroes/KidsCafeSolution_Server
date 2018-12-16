@@ -48,4 +48,12 @@ public class CafeVisitingRecordDao {
 		return true;
 
 	}
+	
+	public boolean updateIsBandWearing(CafeVisitingRecordVo cafeVisitingRecordVo) {
+		if (sqlSession.update("cafeVisitingRecord.updateIsBandWearing", cafeVisitingRecordVo) < 0) {
+			return false;
+		}
+		return true;
+		
+	}
 }
