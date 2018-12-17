@@ -39,7 +39,7 @@
 	  		AND BAND_DEVICE_ID = #{bandDeviceId}
 		  	]]>
 		</if>
-		<if test="endDate == null and bandDeviceId == null and endDate == null">
+		<if test="endDate == null and bandDeviceId == null and childId == null">
 		  <![CDATA[	
 		  	AND BAND_DEVICE_ID IS NOT NULL
 		  	]]>
