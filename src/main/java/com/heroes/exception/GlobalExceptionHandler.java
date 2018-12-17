@@ -30,35 +30,35 @@ public class GlobalExceptionHandler {
 
 		if (exception instanceof DataIntegrityViolationException) {
 			status = Status.DATA_INTEGRITY_VIOLATION_EXCEPTION;
-			httpStatus = HttpStatus.ALREADY_REPORTED;
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
 		} else if (exception instanceof PSQLException) {
 			status = Status.PSQL_EXCEPTION;
-			httpStatus = HttpStatus.ALREADY_REPORTED;
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
 		} else if (exception instanceof ParseException) {
 			status = Status.PARSE_EXCEPTION;
-			httpStatus = HttpStatus.ALREADY_REPORTED;
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
 		} else if (exception instanceof ClassNotFoundException) {
 			status = Status.CALSS_NOT_FOUND_EXCEPTION;
-			httpStatus = HttpStatus.ALREADY_REPORTED;
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
 		} else if (exception instanceof NoSuchMethodException) {
 			status = Status.NO_SUCH_METHOD_EXCEPTION;
-			httpStatus = HttpStatus.ALREADY_REPORTED;
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
 		} else if (exception instanceof SchedulerException) {
 			status = Status.SCHEDULER_EXCEPTION;
-			httpStatus = HttpStatus.ALREADY_REPORTED;
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
 		} else if (exception instanceof SQLException) {
 			status = Status.SQL_EXCEPTION;
-			httpStatus = HttpStatus.ALREADY_REPORTED;
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
 		} else if (exception instanceof SQLException) {
 			status = Status.SQL_EXCEPTION;
-			httpStatus = HttpStatus.ALREADY_REPORTED;
+			httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
 		} else if (exception instanceof ValidationException) {
 			ValidationStatus validationStatus = ((ValidationException) exception).getStatus();

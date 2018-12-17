@@ -67,9 +67,6 @@ public class Validator {
 
 	public ValidationStatus cafeVisitingRecordSelectValidation(Object obj) {
 		CafeVisitingRecordVo cafeVisitingRecordVo = (CafeVisitingRecordVo) obj;
-		if (cafeVisitingRecordVo.getChildId() == null && cafeVisitingRecordVo.getBandDeviceId() == null) {
-			return ValidationStatus.PARAM_ERROR;
-		}
 		return ValidationStatus.SUCCESS;
 	}
 
